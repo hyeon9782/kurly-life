@@ -99,28 +99,23 @@ export default {
 
 <style lang="scss" scoped>
 .app-panel{
-    // z-index: -1;
-    position: absolute;
-    // top:0;
-    bottom: 200px;
-    left:0;
-    width: 100%;
-    height: 800px;
+    width: 480px;
+    height: 100vh;
 
     .panel-overlay{
-        position: absolute;
+        /* z-index: 9; */
+        /* position: absolute; */
         background:rgba(0, 0, 0, 0.6);
-        width: 100%;
-        height: 100%;
+        width: 480px;
+        height: 100vh;
     }
     .panel-content{
-        
-        background: white;
         position: relative;
-        height: 400px;
+        top: 0;
+        left:0;
+        background: white;
+        height: 50%;
         width: 100%;
-        top:540px;
-        left: 0;
         .category-box{
             height: 20%;
             display: flex;

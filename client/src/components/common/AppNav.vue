@@ -1,21 +1,24 @@
 <template>
-  <div class="nav-container">
-    <div class="menu">
-      <span class="material-symbols-outlined">
-        menu
-      </span>
-    </div>
-    <div v-for="(i, idx) in nav" :key="idx" class="link" @click="movePage(i.href)">
-      <span class="material-symbols-outlined">
-        {{ i.icon }}
-      </span>
-    </div>
-    <div class="write" @click="togglePanel">
-      <span class="material-symbols-outlined">
-        edit_square
-      </span>
-    </div>
+  <div>
     <AppPanel ref="panel"/>
+    <div class="nav-container">
+      <div class="menu">
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+      </div>
+      <div v-for="(i, idx) in nav" :key="idx" class="link" @click="movePage(i.href)">
+        <span class="material-symbols-outlined">
+          {{ i.icon }}
+        </span>
+      </div>
+      <div class="write" @click="togglePanel">
+        <span class="material-symbols-outlined">
+          edit_square
+        </span>
+      </div>
+    </div>
+    
   </div>
 </template>
 
@@ -65,12 +68,8 @@ export default {
   width: 480px;
   height: 70px;
   font-size: 48px;
-  position: fixed;
   display: flex;
   justify-content: space-around;
-  left: 0;
-  right: 0;
-  bottom: 0;
   margin: auto;
     .link{
       text-decoration: none;
