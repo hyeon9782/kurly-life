@@ -57,9 +57,9 @@ const routes = [
     component: () => import('@/views/MyPage.vue')
   },
   {
-    path: '/user-page/:id',
+    path: '/mypost/:id',
     name: 'userPage',
-    component: () => import('@/components/user/UserPage.vue')
+    component: () => import('@/components/user/MyPostPage.vue')
   },
   {
     path: '*',
@@ -86,11 +86,6 @@ const routes = [
     path: '/search',
     name: 'search',
     component: () => import('@/views/SearchPage.vue')
-  },
-  {
-    path: '/store',
-    name: 'store',
-    component: () => import('@/views/StorePage.vue')
   },
   {
     path: '/my-scrap/:id',

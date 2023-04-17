@@ -1,4 +1,4 @@
-import { fetchContents, fetchScrapContents, fetchUserContents, fetchMainContents  } from '@/api/contents'
+import { fetchContents, fetchScrapContents, fetchUserContents, fetchBestContents  } from '@/api/contents'
 
 export default {
 
@@ -31,13 +31,16 @@ export default {
         async fetchMainContents({commit}, payload){
             try{
 
-                const res = await fetchMainContents(payload)
+                const res1 = await fetchBestContents(payload.category[0]);
 
-                console.log(res)
+                const res2 = await fetchBestContents(payload.category[1]);
 
-                const recipeContents = res.data.data.postList.slice(0,5)
-                const lifehackContents = res.data.data.postList.slice(5,10)
-                const restaurantContents = res.data.data.postList.slice(10,15)
+                const res3 = await fetchBestContents(payload.category[2]);
+
+
+                const recipeContents = res1.data.data;
+                const lifehackContents = res2.data.data;
+                const restaurantContents = res3.data.data;
 
                 commit('updateState', {
                     recipeContents,
@@ -64,6 +67,8 @@ export default {
                 const res = await fetchContents(payload)
 
                 const contents = res.data.data
+
+                console.log(contents);
 
                 commit('updateState', {
                     contents,

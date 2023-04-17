@@ -5,7 +5,7 @@ import { posts } from "./index";
 function fetchScrapContents(payload) {
   const { category, userId, pageNum } = payload;
   return posts.get(
-    `/api/scrap/${userId}?categoryType=${category}&page=${pageNum}`
+    `/api/scrap?userId=${userId}&category=${category}&page=${pageNum}`
   );
 }
 

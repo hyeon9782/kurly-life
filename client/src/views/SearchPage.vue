@@ -57,7 +57,7 @@ export default {
         pageNum: 1,
         keyword: this.keywords,
         category: "",
-        theme: this.selectTheme,
+        theme: "",
       },
       this.$router.push('/search/main')
     )}

@@ -17,12 +17,12 @@ export default {
   methods:{
     getMain(){
       this.$store.dispatch('contents/fetchMainContents', {
-        accountIdx: 12
+        category : ["recipe", "lifehack", "restaurant"]
       })
     },
   },
   created(){
-    // this.getMain()
+    this.getMain()
   },
   computed:{  
     ...mapState('contents', ['recipeContents', 'lifehackContents', "restaurantContents", "products"])

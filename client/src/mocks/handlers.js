@@ -9,17 +9,33 @@ const handlers = [
     const theme = searchParams.get("theme");
     const keyword = searchParams.get("keyword");
     const pageNum = searchParams.get("pageNum");
-    console.log(category, theme, keyword, pageNum);
+    console.log(category, "theme : " + theme, keyword, pageNum);
     let newContents = [];
-    if (!theme) {
+    if (!keyword && !theme) {
       newContents = contents.filter((content) => {
         return content.category === category;
       });
-    } else {
+      console.log("여기4");
+    } else if (theme){
       newContents = contents.filter((content) => {
         return content.theme === theme;
       });
+      console.log("여기3");
+    } else if (keyword && !category){
+      newContents = contents.filter((content) => {
+        return content.title.includes(keyword);
+      });
+      console.log("여기2");
+    } else {
+      newContents = contents.filter((content) => {
+        return content.category === category
+      });
+      newContents = newContents.filter((content) => {
+        return content.title.includes(keyword);
+      });
+      console.log("여기1");
     }
+
     return res(
       ctx.status(200),
       ctx.json({
@@ -30,42 +46,203 @@ const handlers = [
 
   // 컨텐츠를 등록하는 API
   rest.post("/api/post", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+    console.log(req.body);
+    contents.push(req.body);
+    console.log(contents);
+    return res(ctx.status(200));
   }),
 
   // 컨텐츠를 수정하는 API
   rest.put("/api/post", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+    const contentsId = Number(req.url.searchParams.get("contentsId"));
+    
+    contents.map((content) => {
+      if (content.contentsId === contentsId) {
+        content.content = content;
+      }
+    });
+    console.log(contents);
+    return res(ctx.status(200));
   }),
 
   // 컨텐츠를 삭제하는 API
   rest.post("/api/post", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+    const contentsId = Number(req.url.searchParams.get("contentsId"));
+    contents = contents.filter((content) => content.contentsId !== contentsId);
+    console.log(contents);
+    return res(ctx.status(200));
   }),
 
-  // 메인 페이지 API
-  rest.get("/api/follow", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+  // 베스트 컨텐츠 API
+  rest.get("/api/best", (req, res, ctx) => {
+    const { searchParams } = req.url;
+    console.log("테스트");
+    const category = searchParams.get("category");
+    const newContents = contents.filter((content) => {
+      return content.category === category;
+    });
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: newContents.slice(0, 5),
+      })
+    );
+  }),
+
+  // 내가 작성한 컨텐츠를 가져오는 API
+  rest.get("/api/mypost", (req, res, ctx) => {
+    console.log("테스트");
+    const userId = Number(req.url.searchParams.get("userId"));
+    const newContents = contents.filter((content) => {
+      return content.userId === userId;
+    });
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: newContents,
+      })
+    );
   }),
 
   // 팔로우한 유저의 컨텐츠를 가져오는 API
   rest.get("/api/follow", (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+    const userId = Number(req.url.searchParams.get("userId"));
+    console.log(userId);
+
+    const newContents = contents.filter((content) => {
+      console.log(content.userId);
+      return content.userId === userId;
+    });
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: newContents,
+      })
+    );
   }),
+
+  // 스크랩한 유저의 컨텐츠를 가져오는 API
+  rest.get("/api/scrap", (req, res, ctx) => {
+    const userId = Number(req.url.searchParams.get("userId"));
+    const newContents = contents.filter((content) => {
+      console.log(content.userId);
+      return content.userId === userId;
+    });
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: newContents,
+      })
+    );
+  }),
+
+  // 댓글 조회 API
+  rest.get("/api/comments", (req, res, ctx) => {
+    const contentsId = Number(req.url.searchParams.get("contentsId"))
+    const newComments = comments.filter(comment => {
+      return comment.contentsId = contentsId
+    })
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: newComments,
+      })
+    );
+  }),
+
+  // 댓글 등록 API
+  rest.post("/api/comments", (req, res, ctx) => {
+    console.log(req.body);
+    comments.push(req.body)
+    console.log(comments);
+    return res(
+      ctx.status(200)
+    )
+  }),
+
+  // 댓글 수정 API
+  rest.put("/api/comments", (req, res, ctx) => {
+    const commentId = Number(req.url.searchParams.get("commentId"));
+    const content = Number(req.url.searchParams.get("content"));
+    comments.map(comment => {
+      if (comment.commentId === commentId) {
+        comment.content = content
+      }
+    })
+    console.log(comments);
+    return res(
+      ctx.status(200)
+    )
+  }),
+
+  // 댓글 삭제 API
+  rest.delete("/api/comments", (req, res, ctx) => {
+    const commentId = Number(req.url.searchParams.get("commentId"));
+    comments = comments.filter((comment) => comment.commentId !== commentId);
+    console.log(comments);
+    return res(
+      ctx.status(200)
+    )
+  }),
+
+  // 상품 조회 API
+  rest.get("/api/products", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        data: products,
+      })
+    );
+  })
 ];
 
-const category = ["recipe", "lifehack", "restaurant"];
+const categoryThemes = {
+  recipe: [
+    "저녁",
+    "간식",
+    "생일",
+    "야식",
+    "베이커리",
+    "초간단 요리",
+    "음료",
+    "아이들 간식",
+  ],
+  lifehack: ["요리", "보관", "정리", "살림템", "청소", "기타"],
+  restaurant: ["한식", "중식", "일식", "퓨전", "이탈리안", "프렌치"],
+};
 
-const theme = [];
+let contents = Array.from(Array(32).keys()).map((contentsId) => {
+  const category = ["recipe", "lifehack", "restaurant"][
+    Math.floor(Math.random() * 3)
+  ];
+  const theme =
+    categoryThemes[category][
+      Math.floor(Math.random() * categoryThemes[category].length)
+    ];
+  return {
+    contentsId,
+    title: `${category} ${theme} 제목 ${contentsId}`,
+    content: `<h1>${theme} 내용 ${contentsId}</h1>`,
+    category,
+    theme,
+    keyword: "",
+    ingredient: "",
+    like: Math.floor(Math.random() * 10),
+    userId: Math.floor(Math.random() * 10),
+    userName: "",
+  };
+});
 
-const contents = Array.from(Array(32).keys()).map((id) => ({
-  id,
-  title: `제목입니다 ${id}`,
-  content: `내용입니다 ${id}`,
-  category: category[Math.floor(Math.random() * category.length)],
-  theme: theme[0],
-  userId: id,
-  userName: "",
+let comments = Array.from(Array(32).keys()).map((commentId) => ({
+  commentId,
+  content: `댓글 내용입니다. ${commentId}`,
+  contentsId: Math.floor(Math.random() * 10)
+}));
+
+const products = Array.from(Array(12).keys()).map((productId) => ({
+  productId,
+  productName: `상품 이름 ${productId}`,
+  productPrice: `34,000`,
 }));
 
 

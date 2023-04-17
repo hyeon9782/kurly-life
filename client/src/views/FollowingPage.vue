@@ -25,7 +25,7 @@ export default {
   methods:{
     fetchFollowingContents(){
       this.$store.dispatch('following/fetchFollowingContents',{
-        userId: 10
+        userId: 1
       })
     }
   },

@@ -101,7 +101,7 @@ export default {
 .app-panel{
     width: 480px;
     height: 100vh;
-
+    /* z-index: 1; */
     .panel-overlay{
         /* z-index: 9; */
         /* position: absolute; */
@@ -110,8 +110,8 @@ export default {
         height: 100vh;
     }
     .panel-content{
-        position: relative;
-        top: 0;
+        position: absolute;
+        bottom: 0;
         left:0;
         background: white;
         height: 50%;

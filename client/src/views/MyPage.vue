@@ -45,7 +45,7 @@
 export default {
   methods:{
     myLife(){
-      this.$router.push(`/user-page/${this.id}`)
+      this.$router.push(`/mypost/${this.id}`)
     },
     myScrap(){
       this.$router.push(`/my-scrap/${this.id}`)

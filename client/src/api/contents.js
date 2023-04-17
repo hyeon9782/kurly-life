@@ -24,10 +24,14 @@ function removeContents(payload) {
   return posts.delete(`/api/post`, payload);
 }
 
+// 내가 작성한 컨텐츠를 조회하는 API
+function fetchMyPost(userId){
+  return posts.get(`/api/mypost?userId=${userId}`)
+}
+
 // 메뉴 => 메인 페이지 API (레시피, 생활팁, 맛집 인기 순으로 5개 씩 조회)
-function fetchMainContents(payload){
-    const { accountIdx } = payload
-    return posts.get(`/api/post?${accountIdx}`)
+function fetchBestContents(category){
+    return posts.get(`/api/best?category=${category}`);
 }
 
 // 검색 => 메인 페이지 API
@@ -40,9 +44,10 @@ function fetchContentsSearch(payload){
 
 
 export {
-  fetchMainContents,
+  fetchBestContents,
   fetchContentsSearch,
   fetchContents,
+  fetchMyPost,
   resistContents,
   modifyContents,
   removeContents,

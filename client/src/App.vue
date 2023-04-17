@@ -42,7 +42,7 @@ body{
 }
 
 .main-section{
-  margin-bottom: 70px;
+  
 }
 
 

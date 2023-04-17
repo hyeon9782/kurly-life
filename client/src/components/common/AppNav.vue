@@ -70,7 +70,8 @@ export default {
 }
 
 .nav-container{
-  z-index: 9;
+  z-index: 1;
+  position: relative;
   background: white;
   width: 480px;
   height: 70px;

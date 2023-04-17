@@ -3,16 +3,28 @@
       <div class="test1">
         {{ keyword }}로 검색한 결과들이에요!
       </div>
-      <ContentSlideBox :title="slides[4].title" :description="slides[4].description" :category="slides[4].category" :products="products" />
+      <div class="search-result">
+        <div class="card-container">
+          <template v-if="contents === null || contents.length === 0">
+            <NoData />
+          </template>
+          <template v-else>
+            <ContentCard v-for="(content, idx) in contents" :key="idx"  :item="content"/>
+          </template>
+        </div>
+      </div>
+      <!-- <ContentSlideBox :title="slides[4].title" :description="slides[4].description" :category="slides[4].category" :products="products" />
       <ContentSlideBox :title="slides[0].title" :description="slides[0].description" :category="slides[0].category" :contents="recipeContents" />
       <ContentSlideBox :title="slides[1].title" :description="slides[1].description" :category="slides[1].category" />
       <ContentSlideBox :title="slides[2].title" :description="slides[2].description" :category="slides[2].category" :contents="lifehackContents" />
-      <ContentSlideBox :title="slides[3].title" :description="slides[3].description" :category="slides[3].category" :contents="restaurantContents" />
+      <ContentSlideBox :title="slides[3].title" :description="slides[3].description" :category="slides[3].category" :contents="restaurantContents" /> -->
     </div>
 </template>
 
 <script>
-import ContentSlideBox from '@/components/contents/ContentSlideBox.vue';
+// import ContentSlideBox from '@/components/contents/ContentSlideBox.vue';
+import ContentCard from '@/components/contents/ContentsCard.vue';
+import NoData from '@/components/common/NoData.vue';
 import { mapState } from "vuex";
 export default {
   methods:{
@@ -26,10 +38,12 @@ export default {
     this.getMain()
   },
   computed:{  
-    ...mapState('contents', ['recipeContents', 'lifehackContents', "restaurantContents", "keyword"])
+    ...mapState('contents', ['recipeContents', 'lifehackContents', "restaurantContents", "keyword", "contents"])
   },
   components:{
-    ContentSlideBox
+    // ContentSlideBox
+    NoData,
+    ContentCard
   },
   data(){
     return{
@@ -108,6 +122,15 @@ export default {
       .title-box{
 
       }
+    }
+
+    .search-result{
+      margin: 0 auto;
+    }
+
+    .card-container{
+      display: flex;
+      flex-wrap: wrap;
     }
     
 }

@@ -1,12 +1,7 @@
 <template>
     <div class="header-nav">
-        <template v-if="test == '' || test == null">
+        <template>
             <div v-for="(i,idx) in nav" :key="idx" class="nav-item" :to="i.href" :class="{select:idx==active}" @click="movePage(idx,i)">
-                {{ i.text }}
-            </div>
-        </template>
-        <template v-if="test != ''">
-            <div v-for="(i,idx) in navSearch" :key="idx" class="nav-item" :to="i.href" :class="{select:idx==active}" @click="select(idx,i.category,i.href)">
                 {{ i.text }}
             </div>
         </template>
@@ -44,46 +39,14 @@ export default {
                     href: "/restaurant"
                 },
             ],
-            navSearch:[
-                {
-                    text: "전체",
-                    href: "/",
-                    category: "",
-                },
-                {
-                    text: "스토어",
-                    href: "/store",
-                    category: ""
-                },
-                {
-                    text: "레시피",
-                    href: "/recipe",
-                    category: "recipe"
-                },
-                {
-                    text: "생활팁",
-                    href: "/lifehack",
-                    category: "tip"
-                },
-                {
-                    text: "맛집",
-                    href: "/restaurant",
-                    category: "popular-restaurant"
-                },
-            ],
             active: 0
         }
     },
     methods:{
-        change(idx){
-            this.active = idx
-        },
         movePage(idx,i){
-            this.change(idx)
             this.$router.push({path: i.href,params: {category: i.text }}).catch(err => err);
         },
         select(idx,category,path){
-            this.change(idx)
             this.$store.dispatch('contents/searchContents',{
                 pageNum: 1,
                 keyword: this.keywords,
@@ -93,9 +56,15 @@ export default {
             this.$router.push(path)
         }
     },
-    // watch: {
-    //     '$route': 'change'
-    // }
+    watch: {
+        '$route.path': function(val) {
+            if (val === "/") this.active = 0
+            else if (val === "/following") this.active = 1
+            else if (val === "/recipe") this.active = 2
+            else if (val === "/lifehack") this.active = 3
+            else if (val === "/restaurant") this.active = 4
+        }
+    }
 }
 </script>
 

@@ -26,7 +26,7 @@ export default {
 
                 const res = await fetchFollowingContents(payload)
 
-                const followingContents = res.data.data.postItemList
+                const followingContents = res.data.data
 
                 commit('updateState',{
                     followingContents,

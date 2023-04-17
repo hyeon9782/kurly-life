@@ -3,7 +3,7 @@ import { posts } from './index'
 
 function fetchFollowingContents(payload){
     const { userId } = payload
-    return posts.get(`/api/follow/${userId}`)
+    return posts.get(`/api/follow?userId=${userId}`)
 }
 
 function insertFollowing(payload){

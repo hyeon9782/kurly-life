@@ -16,7 +16,6 @@
 import NoData from '@/components/common/NoData.vue';
 import ContentTheme from '@/components/contents/ContentsTheme.vue';
 import ContentCard from '@/components/contents/ContentsCard.vue';
-import axios from 'axios'
 export default {
   components:{
     NoData,
@@ -45,31 +44,6 @@ export default {
         }
       )
     },
-    async infiniteHandler($state) {
-      const api = `http://localhost:8080/api/post/recipe`
-      await axios.get(api, {
-        params: {
-          pageNum: this.page,
-          keyword: this.keyword,
-          theme: this.theme
-        },
-      }).then(({ data }) => {
-
-        if (data.data.postList.length) {
-          this.page += 1;
-          // this.list.push(...data.data.scrapItemList)
-          for (const item of data.data.postList){
-            const data = {
-              title: item.title
-            }
-            this.items.push(data)
-          }
-          $state.loaded(); 
-        } else {
-          $state.complete();
-        }
-      });
-    },
   },
   comments:{
     test(){
@@ -87,6 +61,7 @@ export default {
 <style lang="scss" scoped>
 .recipe-container{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   .card-container{
     display: flex;
