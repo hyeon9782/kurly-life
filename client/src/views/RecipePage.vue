@@ -8,7 +8,6 @@
       <template v-else>
         <ContentCard v-for="(recipe, idx) in recipeList" :key="idx"  :item="recipe"/>
       </template>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
     </div>
   </div>
 </template>
@@ -17,14 +16,12 @@
 import NoData from '@/components/common/NoData.vue';
 import ContentTheme from '@/components/contents/ContentsTheme.vue';
 import ContentCard from '@/components/contents/ContentsCard.vue';
-import InfiniteLoading from "vue-infinite-loading";
 import axios from 'axios'
 export default {
   components:{
     NoData,
     ContentTheme,
     ContentCard,
-    InfiniteLoading
   },
   data(){
     return{
@@ -32,7 +29,7 @@ export default {
       page: "",
       items: [],
       categoryType: "",
-      keyword: ""
+      keyword: "",
     }
   },
   created(){

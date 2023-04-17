@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>
+    <div class="app-box">
       <AppHeader v-if="!type"/>
       <SubHeader v-if="type"/>
       <div class="main-section">
@@ -35,6 +35,10 @@ export default {
 
 body{
   font-family: 'Nanum Gothic', sans-serif;
+}
+
+.app-box{
+  height: 100vh;
 }
 
 .main-section{

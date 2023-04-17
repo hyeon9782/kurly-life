@@ -22,7 +22,7 @@ export default {
     },
   },
   created(){
-    this.getMain()
+    // this.getMain()
   },
   computed:{  
     ...mapState('contents', ['recipeContents', 'lifehackContents', "restaurantContents", "products"])

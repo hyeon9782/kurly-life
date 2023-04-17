@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav-block">
     <AppPanel ref="panel"/>
     <div class="nav-container">
       <div class="menu">
@@ -62,6 +62,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nav-block{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .nav-container{
   z-index: 9;
   background: white;

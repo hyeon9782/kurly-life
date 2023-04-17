@@ -27,7 +27,7 @@ export default {
       this.$store.dispatch('contents/searchContents',{
         pageNum: 1,
         keyword: "",
-        category: "popular-restaurant",
+        category: "restaurant",
         theme: "",
         userId: "",
       })

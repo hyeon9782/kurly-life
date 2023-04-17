@@ -63,19 +63,12 @@ export default {
 
                 const res = await fetchContents(payload)
 
-                console.log(res)
-
-                const contents = res.data.data.postList
+                const contents = res.data.data
 
                 commit('updateState', {
                     contents,
                     keyword: payload.keyword
                 })
-
-                // state.keyword == payload.keyword
-                // alert(payload.keyword)
-
-                // alert(state.keyword)
 
             }catch (err) {
                 console.log(err)
