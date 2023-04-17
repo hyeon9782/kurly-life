@@ -9,9 +9,25 @@
 <script>
 import UserContent from '@/components/user/UserContent.vue';
 export default {
-    components:{
-        UserContent,
+  components:{
+    UserContent,
+  },
+  methods:{
+    fetchData(){
+      this.$store.dispatch('contents/fetchScrapContents', {
+        contentsId: "",
+        category: ""
+      })
     }
+  },
+  computed:{
+    contents(){
+      return this.$store.state.contents.contents
+    }
+  },
+  created(){
+
+  }
 }
 </script>
 

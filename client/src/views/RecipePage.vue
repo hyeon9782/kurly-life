@@ -36,23 +36,22 @@ export default {
   },
   methods:{
       searchRecipe(){
+        console.log(this.theme);
         this.$store.dispatch('contents/searchContents',{
           pageNum: 1,
           keyword: "",
           category: "recipe",
-          theme: this.selectTheme,
+          theme: this.theme || this.selectTheme,
         }
       )
     },
   },
-  comments:{
-    test(){
-      return this.$route.params.theme
-    }
-  },
   computed:{
     recipeList(){
       return this.$store.state.contents.contents
+    },
+    theme(){
+      return this.$route.params.theme
     }
   },
 }

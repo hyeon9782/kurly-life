@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="product-title">
-      {{ product.title }}
+      {{ product.productName }}
     </div>
     <div class="product-price">
       <template v-if="product.discount === 0">
@@ -62,10 +62,10 @@ export default {
   },
   computed:{
     originalPrice(){
-      return this.product.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원" 
+      return this.product.productPrice.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원" 
     },
     discountPrice(){
-      let discountPrice = this.product.price / this.product.discount
+      let discountPrice = this.product.productPrice / this.product.discount
       
       return Math.ceil(discountPrice).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원"
     }

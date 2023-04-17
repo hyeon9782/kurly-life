@@ -1,7 +1,7 @@
 <template>
   <div class="content-detail">
     <div class="title-box">
-      {{ title }}
+      {{ detail.title }}
     </div>
     <div class="detail-head">
       <UserBox uploadDate="2022-08-20"/>
@@ -9,32 +9,7 @@
         <FollowBtn />
       </div>
     </div>
-    <div class="content-section">
-      <tempalte v-if="false">
-        <div v-for="content in contents" :key="content.text" class="content-module">
-          <div class="content-text" v-if="content.text != null && content.text != ''">
-            {{ content.text }}
-          </div>
-          <div class="content-img" v-if="content.img != null && content.img != ''">
-            <AppImage :img="content.img" v-if="false"/>
-          </div>
-        </div>
-      </tempalte>
-      <div>
-        <img src="https://post-phinf.pstatic.net/MjAxOTA4MDVfMTIy/MDAxNTY0OTQ3ODQ4OTQy.QXteWdrGfktqdVGNfqlQYYHzfm0mmAExpmHIkzHk35Ug.vwv-PcE5NyiKY4jsdLq48iZv8hNAKgBMl65YL2Zd8R0g.JPEG/mug_obj_201908050444109060.jpg?type=w1080" alt="dd" width="100%">
-        <div class="text-box">
-          사라다 빵을 만들어볼거에요~~ㅎㅎ 사라다 빵이 얼마나 맛있게요~~?
-        </div>
-        <img src="https://post-phinf.pstatic.net/MjAxOTA4MDVfMjIw/MDAxNTY0OTQ3ODQ3NjI2.mMEC0cDA5UxojMLqhJXnLEcPrsWUce7LofFhVsUp08kg.9_0I_5N2vRnjY_BR7dBxcNiTFA8Oz74rbWkgC6FCzM4g.JPEG/mug_obj_201908050444102089.jpg?type=w1080" alt="dd" width="100%">
-        <div class="text-box">
-          찐감자를 살짝 구워주시면 감칠맛이 살아납니다!
-        </div>
-        <img src="https://post-phinf.pstatic.net/MjAxOTA4MDVfMjQ5/MDAxNTY0OTQ3ODQ5OTg5.o2li_IA9NFYHbi38zf9mptFANwL1v36h8GZfLcfLicsg.b3qoZvxH8rhPmrkRCiV0Lfq6rPkI8g5Ag86zgSbJ674g.JPEG/mug_obj_201908050444103220.jpg?type=w1080" alt="dd" width="100%">
-        <div class="text-box">
-          오늘의 요리 찐감자를 구워서 만든 사라다 빵으로 만든 새우 감자 크로켓 완성!
-        </div>
-      </div>
-    </div>
+    <div class="content-section" v-html="detail.content"></div>
     <div class="click-section">
       <ClickBox />
     </div>
@@ -81,20 +56,29 @@ import ClickBox from '@/components/common/ClickBox.vue';
 import ContentsCard from '@/components/contents/ContentsCard.vue';
 import FollowBtn from '@/components/following/FollowBtn.vue';
 import UserBox from '@/components/user/UserBox.vue';
-import AppImage from '@/components/common/AppImage.vue';
 import ProductSlide from '@/components/product/ProductSlide.vue';
 import ScrollUp from '@/components/common/ScrollUp.vue';
 export default {
   methods:{
     commentsFullView(){
-      this.$router.push(`/comments/${this.contentsId}`)
+      this.$router.push(`/comments/${this.$route.params.contentsId}`)
+    },
+    getDetailContents(){
+      this.$store.dispatch('contents/fetchDetailContents', this.$route.params.contentsId)
     }
+  },
+  computed:{
+    detail(){
+      return this.$store.state.contents.detail
+    }
+  },
+  created(){
+    this.getDetailContents()
   },
   data(){
     return{
-      contentsId: "214153",
-      title: "할지니 인생에 할지니 인생에할지니 인생에할지니",
-      img: "",
+      title: "",
+      content: "",
       nickname: "노른자없는계란",
       uploadDate: "2022-08-20",
       userId: "312",
@@ -165,31 +149,12 @@ export default {
           price: 77123
         },
       ],
-      contents: [
-        {
-          text: '안녕하세요!!!!!!!!!!!!!!!!!!!!!!!!!!',
-          img: ''
-        },
-        {
-          text: '저는!!!!!!!!!!!!!!!!!!!!',
-          img: 'ㄴㅁㅇ'
-        },
-        {
-          text: '안녕안녕',
-          img: ''
-        },
-        {
-          text: '내 이름은 디보',
-          img: 'ㅁㄴㅇ'
-        },
-      ],
     }
   },
   components:{
     ProductSlide,
     FollowBtn,
     UserBox,
-    AppImage,
     ScrollUp,
     ContentsCard,
     ClickBox,

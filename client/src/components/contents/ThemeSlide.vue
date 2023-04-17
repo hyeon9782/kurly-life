@@ -24,8 +24,10 @@ export default {
   },
   methods:{
     movePage(theme){
-        alert(theme)
-        this.$router.push({path:"/recipe", params: theme})
+      this.$router.push({
+        name: 'recipe',
+        params: {theme}
+      })
     }
   },
   components: {

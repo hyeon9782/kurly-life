@@ -24,20 +24,19 @@ function removeContents(payload) {
   return posts.delete(`/api/post`, payload);
 }
 
+// contentsId로 컨텐츠를 조회하는 API
+function fetchContentsWithContentsId(contentsId){
+  return posts.get(`/api/post/${contentsId}`);
+}
+
 // 내가 작성한 컨텐츠를 조회하는 API
 function fetchMyPost(userId){
   return posts.get(`/api/mypost?userId=${userId}`)
 }
 
-// 메뉴 => 메인 페이지 API (레시피, 생활팁, 맛집 인기 순으로 5개 씩 조회)
+// 좋아요 수가 많은 컨텐츠 5개를 조회하는 API
 function fetchBestContents(category){
     return posts.get(`/api/best?category=${category}`);
-}
-
-// 검색 => 메인 페이지 API
-// 레시피, 생활팁, 맛집 검색한 키워드에 해당되는 컨텐츠 인기 순으로 5개씩 조회
-function fetchContentsSearch(payload){
-    return posts.post('/api/search-contents', payload)
 }
 
 
@@ -45,7 +44,7 @@ function fetchContentsSearch(payload){
 
 export {
   fetchBestContents,
-  fetchContentsSearch,
+  fetchContentsWithContentsId,
   fetchContents,
   fetchMyPost,
   resistContents,

@@ -34,34 +34,6 @@ export default {
   data(){
     return{
       events:["첫 글쓰기 1,000포인트 증정!","매 주 인기 멤버 3,000포인트 증정!"],
-      list:[1,2,3,4,5],
-      products: [
-        {
-          img: "",
-          title: "테스트 제목 1",
-          price: 19165
-        },
-        {
-          img: "",
-          title: "테스트 제목 2",
-          price: 36571
-        },
-        {
-          img: "",
-          title: "테스트 제목 3",
-          price: 15312
-        },
-        {
-          img: "",
-          title: "테스트 제목 4",
-          price: 95723
-        },
-        {
-          img: "",
-          title: "테스트 제목 5",
-          price: 77123
-        },
-      ],
       slides:[
         {
           title:"컬리의 인기 레시피",

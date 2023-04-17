@@ -29,8 +29,8 @@
     <div class="title">
       {{ item.title }}
     </div>
-    <div class="content-box">
-      테스트 중인 글입니다@@@@@@@@@@@@@@@@@@@@@@@
+    <div class="content-box" v-html='item.content'>
+      
     </div>
   </div>
 </template>

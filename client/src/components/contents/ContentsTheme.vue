@@ -52,9 +52,17 @@ export default {
       })
     }
   },
+  created(){
+    if (this.theme) {
+      this.active = this.recipeTheme.indexOf(this.theme)
+    }
+  },
   computed:{
     keyword(){
       return this.$store.state.contents.keyword
+    },
+    theme(){
+      return this.$route.params.theme
     }
   }
 }

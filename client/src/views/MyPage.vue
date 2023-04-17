@@ -45,17 +45,12 @@
 export default {
   methods:{
     myLife(){
-      this.$router.push(`/mypost/${this.id}`)
+      this.$router.push(`/mypost/1`)
     },
     myScrap(){
-      this.$router.push(`/my-scrap/${this.id}`)
+      this.$router.push(`/scrap/1`)
     }
   },
-  computed:{
-    id(){
-      return "5296123"
-    }
-  }
 }
 </script>
 

@@ -89,6 +89,20 @@ const handlers = [
     );
   }),
 
+  // 컨텐스 상세페이지
+  rest.get("/api/post/:contentsId", (req, res, ctx) => {
+    const contentsId = Number(req.params.contentsId);
+    let newContents = {};
+    contents.map((content) => {
+      if (content.contentsId === contentsId) {
+        newContents = content;
+      }
+    })
+    console.log(contentsId);
+    console.log(newContents);
+    return res(ctx.status(200), ctx.json(newContents));
+  }),
+
   // 내가 작성한 컨텐츠를 가져오는 API
   rest.get("/api/mypost", (req, res, ctx) => {
     console.log("테스트");
@@ -239,10 +253,11 @@ let comments = Array.from(Array(32).keys()).map((commentId) => ({
   contentsId: Math.floor(Math.random() * 10)
 }));
 
-const products = Array.from(Array(12).keys()).map((productId) => ({
+const products = Array.from(Array(5).keys()).map((productId) => ({
   productId,
   productName: `상품 이름 ${productId}`,
-  productPrice: `34,000`,
+  productPrice: 19000,
+  discount: 10
 }));
 
 

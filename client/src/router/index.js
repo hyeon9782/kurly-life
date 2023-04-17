@@ -17,7 +17,7 @@ const routes = [
     component: () => import('@/views/ContentsPage.vue'),
   },
   {
-    path: '/contents/:id',
+    path: '/contents/:contentsId',
     name: 'detail',
     component: () => import('@/components/contents/ContentsDetail.vue'),
   },
@@ -88,7 +88,7 @@ const routes = [
     component: () => import('@/views/SearchPage.vue')
   },
   {
-    path: '/my-scrap/:id',
+    path: '/scrap/:id',
     name: 'myScrap',
     params:  '스크랩',
     component: () => import('@/components/mypage/MyScrap.vue')
@@ -105,10 +105,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  
-  if (to.path === '/write' || to.path === `/contents/${to.params.id}` || to.path === `/user-page/${to.params.id}` || to.path === `/my-scrap/${to.params.id}` || to.path === `/comments/${to.params.id}` || to.path === `/reply/${to.params.id}`){
+
+  if (to.path === '/write' || to.path === `/contents/${to.params.contentsId}` || to.path === `/mypost/${to.params.id}` || to.path === `/scrap/${to.params.id}` || to.path === `/comments/${to.params.id}` || to.path === `/reply/${to.params.id}`){
     store.state['type'] = "sub" 
-    // alert(to.params)
     store.state['title'] = to.title
   } else {
     store.state['type'] = "main"

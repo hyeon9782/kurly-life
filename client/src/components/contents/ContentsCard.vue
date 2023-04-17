@@ -44,8 +44,7 @@ export default {
   },
   methods:{
     detail(){
-      const id = "531326312"
-      this.$router.push(`/contents/${id}`)
+      this.$router.push(`/contents/${this.item.contentsId}`)
     }
   }
 }
