@@ -1,4 +1,5 @@
 {
+  "homepage": "https://hyeon9782.github.io/kurly-life",
   "name": "vue2-kurly-life",
   "version": "0.1.0",
   "private": true,
@@ -6,7 +7,9 @@
     "serve": "vue-cli-service serve --port 5000",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@tiptap/starter-kit": "^2.0.0-beta.191",
@@ -37,6 +40,7 @@
     "babel-jest": "^27.0.6",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "gh-pages": "^5.0.0",
     "jest": "^27.0.5",
     "msw": "^1.2.1",
     "sass": "^1.32.7",
