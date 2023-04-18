@@ -91,11 +91,14 @@ export default {
         async fetchDetailContents({commit}, contentsId){
             try {
                 const res = await fetchContentsWithContentsId(contentsId);
+                const res1 = await fetchProducts();
                 const detail = res.data;
+                const products = res1.data.data;
 
-                commit('updateState', {
-                    detail
-                })
+                commit("updateState", {
+                  detail,
+                  products,
+                });
             } catch (err) {
                 console.log(err);
             }

@@ -7,93 +7,93 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'main',
-    component: () => import('@/views/MainPage.vue')
+    path: "/",
+    name: "main",
+    component: () => import("@/views/MainPage.vue"),
   },
   {
-    path: '/contents',
-    name: 'contents',
-    component: () => import('@/views/ContentsPage.vue'),
+    path: "/contents",
+    name: "contents",
+    component: () => import("@/views/ContentsPage.vue"),
   },
   {
-    path: '/contents/:contentsId',
-    name: 'detail',
-    component: () => import('@/components/contents/ContentsDetail.vue'),
+    path: "/contents/:contentsId",
+    name: "detail",
+    component: () => import("@/components/contents/ContentsDetail.vue"),
   },
   {
-    path: '/write',
-    name: 'write',
-    component: () => import('@/components/contents/ContentsWrite.vue'),
+    path: "/write",
+    name: "write",
+    component: () => import("@/views/RegistPage.vue"),
   },
   {
-    path: '/contents/modify',
-    name: 'modify',
-    component: () => import('@/components/contents/ContentsWrite.vue'),
+    path: "/contents/modify",
+    name: "modify",
+    component: () => import("@/views/RegistPage.vue"),
   },
   {
-    path: '/comments/:id',
-    name: 'comments',
-    component: () => import('@/components/comments/CommentsPage.vue'),
+    path: "/comments/:id",
+    name: "comments",
+    component: () => import("@/components/comments/CommentsPage.vue"),
   },
   {
-    path: '/reply/:id',
-    name: 'reply',
-    component: () => import('@/components/comments/CommentsReply.vue'),
+    path: "/reply/:id",
+    name: "reply",
+    component: () => import("@/components/comments/CommentsReply.vue"),
   },
   {
-    path: '/search/main',
-    name: 'searchMain',
-    component: () => import('@/views/SearchMainPage.vue'),
+    path: "/search/main",
+    name: "searchMain",
+    component: () => import("@/views/SearchMainPage.vue"),
   },
   {
-    path: '/following',
-    name: 'following',
-    component: () => import('@/views/FollowingPage.vue')
+    path: "/following",
+    name: "following",
+    component: () => import("@/views/FollowingPage.vue"),
   },
   {
-    path: '/mypage',
-    name: 'mypage',
-    component: () => import('@/views/MyPage.vue')
+    path: "/mypage",
+    name: "mypage",
+    component: () => import("@/views/MyPage.vue"),
   },
   {
-    path: '/mypost/:id',
-    name: 'userPage',
-    component: () => import('@/components/user/MyPostPage.vue')
+    path: "/mypost/:id",
+    name: "userPage",
+    component: () => import("@/components/user/MyPostPage.vue"),
   },
   {
-    path: '*',
-    name: 'notFound',
-    component: () => import('@/views/NotFoundPage.vue')
+    path: "*",
+    name: "notFound",
+    component: () => import("@/views/NotFoundPage.vue"),
   },
-  
+
   {
-    path: '/recipe',
-    name: 'recipe',
-    component: () => import('@/views/RecipePage.vue')
-  },
-  {
-    path: '/lifehack',
-    name: 'lifehack',
-    component: () => import('@/views/LifehackPage.vue')
+    path: "/recipe",
+    name: "recipe",
+    component: () => import("@/views/RecipePage.vue"),
   },
   {
-    path: '/restaurant',
-    name: 'restaurant',
-    component: () => import('@/views/RestaurantPage.vue')
+    path: "/lifehack",
+    name: "lifehack",
+    component: () => import("@/views/LifehackPage.vue"),
   },
   {
-    path: '/search',
-    name: 'search',
-    component: () => import('@/views/SearchPage.vue')
+    path: "/restaurant",
+    name: "restaurant",
+    component: () => import("@/views/RestaurantPage.vue"),
   },
   {
-    path: '/scrap/:id',
-    name: 'myScrap',
-    params:  '스크랩',
-    component: () => import('@/components/mypage/MyScrap.vue')
+    path: "/search",
+    name: "search",
+    component: () => import("@/views/SearchPage.vue"),
   },
-]
+  {
+    path: "/scrap/:id",
+    name: "myScrap",
+    params: "스크랩",
+    component: () => import("@/components/mypage/MyScrap.vue"),
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',

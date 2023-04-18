@@ -47,6 +47,7 @@ const handlers = [
   // 컨텐츠를 등록하는 API
   rest.post("/api/post", (req, res, ctx) => {
     console.log(req.body);
+    // const { category, } = req.body;
     contents.push(req.body);
     console.log(contents);
     return res(ctx.status(200));
@@ -225,6 +226,29 @@ const categoryThemes = {
   restaurant: ["한식", "중식", "일식", "퓨전", "이탈리안", "프렌치"],
 };
 
+const users = [
+  {
+    userId: 0,
+    profile: "",
+    nickname: "노른자없는계란",
+  },
+  {
+    userId: 1,
+    profile: "",
+    nickname: "흰자없는계란",
+  },
+  {
+    userId: 2,
+    profile: "",
+    nickname: "계란없는노른자",
+  },
+  {
+    userId: 3,
+    profile: "",
+    nickname: "계란없는흰자",
+  },
+];
+
 let contents = Array.from(Array(32).keys()).map((contentsId) => {
   const category = ["recipe", "lifehack", "restaurant"][
     Math.floor(Math.random() * 3)
@@ -233,6 +257,7 @@ let contents = Array.from(Array(32).keys()).map((contentsId) => {
     categoryThemes[category][
       Math.floor(Math.random() * categoryThemes[category].length)
     ];
+  const { userId, nickname } = users[Math.floor(Math.random() * 4)];
   return {
     contentsId,
     title: `${category} ${theme} 제목 ${contentsId}`,
@@ -242,8 +267,9 @@ let contents = Array.from(Array(32).keys()).map((contentsId) => {
     keyword: "",
     ingredient: "",
     like: Math.floor(Math.random() * 10),
-    userId: Math.floor(Math.random() * 10),
-    userName: "",
+    userId,
+    nickname,
+    localKeyword: ""
   };
 });
 

@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { registContents } from '@/api/contents';
 import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
 // import { insertContents } from "@/api/bulletin"
 // import axios from "axios";
@@ -74,18 +75,23 @@ export default {
     storyUpload(){
       this.cutStr()
       const bulletinData = {
+        contentsId: 32,
+        title: this.title,
+        content: this.htmlForEditor,
         category: this.$route.params.category,
         theme: this.$route.params.theme,
-        title: this.title,
         keyword: this.keywords,
-        localKeyword: this.localKeywords,
-        content: this.content 
+        ingredient: "",
+        like: 0,
+        userId: 1,
+        nickname: "테스트입니다",
+        localKeyword: this.localKeyword,
       }
-      this.test = this.content
       console.log(bulletinData);
-      alert("업로드 완료!")
-      this.$router.back()
-      // insertContents(bulletinData)
+      console.log(this.htmlForEditor);
+      // alert("업로드 완료!")
+      // this.$router.back()
+      registContents(bulletinData)
       
     },
     setEditorContent() {

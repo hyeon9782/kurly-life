@@ -10,7 +10,7 @@ function fetchContents(payload){
 }
 
 // 컨텐츠를 등록하는 API
-function resistContents(payload){
+function registContents(payload){
     return posts.post(`/api/post`, payload)
 }
 
@@ -47,7 +47,7 @@ export {
   fetchContentsWithContentsId,
   fetchContents,
   fetchMyPost,
-  resistContents,
+  registContents,
   modifyContents,
   removeContents,
 };

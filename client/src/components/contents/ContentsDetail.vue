@@ -4,12 +4,12 @@
       {{ detail.title }}
     </div>
     <div class="detail-head">
-      <UserBox uploadDate="2022-08-20"/>
+      <UserBox uploadDate="2022-08-20" :nickname="detail.nickname" :userId="detail.userId"/>
       <div class="btn-box">
         <FollowBtn />
       </div>
     </div>
-    <div class="content-section" v-html="detail.content"></div>
+    <div class="content-section" v-html="`${detail.content}`"></div>
     <div class="click-section">
       <ClickBox />
     </div>
@@ -70,6 +70,9 @@ export default {
   computed:{
     detail(){
       return this.$store.state.contents.detail
+    },
+    products(){
+      return this.$store.state.contents.products
     }
   },
   created(){
@@ -122,33 +125,6 @@ export default {
           scrapNum: 13
         },
       ],
-      products: [
-        {
-          img: "",
-          title: "테스트 제목 1",
-          price: 19165
-        },
-        {
-          img: "",
-          title: "테스트 제목 2",
-          price: 36571
-        },
-        {
-          img: "",
-          title: "테스트 제목 3",
-          price: 15312
-        },
-        {
-          img: "",
-          title: "테스트 제목 4",
-          price: 95723
-        },
-        {
-          img: "",
-          title: "테스트 제목 5",
-          price: 77123
-        },
-      ],
     }
   },
   components:{
@@ -164,6 +140,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+h1 {
+  font-size: 32px !important;  /* 또는 다른 크기를 지정하세요 */
+}
 .content-detail{
   width: 480px;
   .title-box{

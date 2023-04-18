@@ -35,6 +35,7 @@ export default {
 
 body{
   font-family: 'Nanum Gothic', sans-serif;
+  margin: 0;
 }
 
 .app-box{
