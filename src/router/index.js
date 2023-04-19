@@ -58,8 +58,8 @@ const routes = [
   },
   {
     path: "/mypost/:id",
-    name: "userPage",
-    component: () => import("@/components/user/MyPostPage.vue"),
+    name: "mypost",
+    component: () => import("@/views/MyPostPage.vue"),
   },
   {
     path: "*",
@@ -89,9 +89,9 @@ const routes = [
   },
   {
     path: "/scrap/:id",
-    name: "myScrap",
+    name: "scrap",
     params: "스크랩",
-    component: () => import("@/components/mypage/MyScrap.vue"),
+    component: () => import("@/views/ScrapPage.vue"),
   },
 ];
 

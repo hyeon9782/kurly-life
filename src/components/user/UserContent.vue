@@ -1,33 +1,34 @@
 <template>
   <div class="user-content">
     <div class="user-content-tab">
-      <div class="tab" v-for="(tab, idx) in tabs" :key="idx" :class="{select:idx==active}" @click="searchScrapContents(idx,tab.category)">
+      <div class="tab" v-for="(tab, idx) in tabs" :key="idx" :class="{select:idx==active}" @click="fetchContents(idx,tab.category)">
         {{ tab.text }}
       </div>    
     </div>
     <div class="content-container">
       <template v-if="true">
-        <div class="content-card" v-for="scrapContent in scrapContents" :key="scrapContent.id" @click="detail(scrapContent.id)">
-          <img :src="scrapContent.url" alt="img" width="100%">
+        <div class="content-card" v-for="content in contents" :key="content.id" @click="detail(content.contentsId)">
+          <img :src="content.url" alt="img" width="100%">
         </div>
       </template>
       <div v-for="(item, $index) in items" :key="$index" class="content-card" >
         {{ item.idx }}
       </div>
-      
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
-      
     </div>
   </div>
 </template>
 
 <script>
-import InfiniteLoading from "vue-infinite-loading";
-import axios from 'axios'
-// import { fetchScrapContents } from "@/api/contents";
 export default {
-  components:{
-    InfiniteLoading
+  props:{
+    type: {
+      type: String,
+      default: () => (""),
+    },
+    userId: {
+      type: Number,
+      default: () => (0)
+    }
   },
   data(){
     return{
@@ -44,11 +45,11 @@ export default {
         },
         {
           text: "생활팁",
-          category: "tip"
+          category: "lifehack"
         },
         {
           text: "맛집",
-          category: "popular-restaurant"
+          category: "restaurant"
         },
       ],
       active: 0,
@@ -56,12 +57,9 @@ export default {
     }
   },
   computed:{
-    scrapContents(){
-      return this.$store.state.contents.scrapContents
+    contents(){
+      return this.$store.state.contents.contents
     }
-  },
-  created(){
-    this.searchScrapContents()
   },
   methods:{
     detail(id){
@@ -70,42 +68,23 @@ export default {
     change(idx){
       this.active = idx
     },
-    searchScrapContents(idx,category){
+    fetchContents(idx,category){
       this.change(idx ? idx : 0)
-      this.$store.dispatch('contents/searchScrapContents',{
+      let url = ""
+      if (this.type === "scrap") url = "fetchScrapContents"
+      else if (this.type === "user") url = "fetchUserContents"
+      this.$store.dispatch(`contents/${url}`,{
         pageNum: 0,
         category: category ? category : "",
-        userId: 12
+        userId: this.userId ? this.userId : 1,
       })
       this.categoryType = category
       
       console.log(category)
     },
-    async infiniteHandler($state) {
-      const userId = 12
-      const api = `http://localhost:8080/api/scrap/${userId}`
-      await axios.get(api, {
-        params: {
-          page: this.page,
-          categoryType: this.categoryType
-        },
-      }).then(({ data }) => {
-
-        if (data.data.scrapItemList.length) {
-          this.page += 1;
-          // this.list.push(...data.data.scrapItemList)
-          for (const item of data.data.scrapItemList){
-            const data = {
-              title: item.title
-            }
-            this.items.push(data)
-          }
-          $state.loaded(); 
-        } else {
-          $state.complete();
-        }
-      });
-    },
+  },
+  created(){
+    this.fetchContents()
   }
 }
 </script>

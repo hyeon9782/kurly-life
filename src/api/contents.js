@@ -29,9 +29,10 @@ function fetchContentsWithContentsId(contentsId){
   return posts.get(`/api/post/${contentsId}`);
 }
 
-// 내가 작성한 컨텐츠를 조회하는 API
-function fetchMyPost(userId){
-  return posts.get(`/api/mypost?userId=${userId}`)
+// userId로 컨텐츠를 조회하는 API
+function fetchContentsWithUserId(payload){
+  const { userId, category } = payload;
+  return posts.get(`/api/mypost?userId=${userId}&category=${category}`);
 }
 
 // 좋아요 수가 많은 컨텐츠 5개를 조회하는 API
@@ -46,7 +47,7 @@ export {
   fetchBestContents,
   fetchContentsWithContentsId,
   fetchContents,
-  fetchMyPost,
+  fetchContentsWithUserId,
   registContents,
   modifyContents,
   removeContents,

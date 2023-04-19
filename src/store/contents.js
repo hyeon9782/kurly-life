@@ -1,4 +1,5 @@
-import { fetchContents, fetchScrapContents, fetchUserContents, fetchBestContents, fetchContentsWithContentsId  } from '@/api/contents'
+import { fetchContents, fetchBestContents, fetchContentsWithContentsId, fetchContentsWithUserId  } from '@/api/contents'
+import { fetchScrapContents } from '@/api/scrap';
 import { fetchProducts } from '@/api/products';
 
 export default {
@@ -55,10 +56,6 @@ export default {
                     products
                 })
 
-                console.log(recipeContents)
-                console.log(lifehackContents)
-                console.log(restaurantContents)
-
             }catch (err){
                 console.log(err)
             }
@@ -105,20 +102,20 @@ export default {
         },
 
         // 사용자가 스크랩한 컨텐츠를 조회
-        async searchScrapContents({commit}, payload){
+        async fetchScrapContents({commit}, payload){
 
             try{
                 const res = await fetchScrapContents(payload)
 
                 console.log(res)
 
-                const scrapContents = res.data.data.scrapItemList
+                const contents = res.data.data
 
-                commit('updateState', {
-                    scrapContents
-                })
+                commit("updateState", {
+                  contents,
+                });
 
-                console.log(scrapContents)
+                console.log(contents);
 
             }catch (err){
                 console.log(err)
@@ -126,39 +123,23 @@ export default {
         },
 
         // 사용자가 작성한 컨텐츠를 조회 
-        async searchUserContents({state,commit}, payload){
+        async fetchUserContents({state,commit}, payload){
             try{
-                const res = await fetchUserContents(payload)
+                const res = await fetchContentsWithUserId(payload)
 
                 console.log(res)
 
-                const userContents = res.data.data.scrapItemList
+                const contents = res.data.data
 
-                commit('updateState', {
-                    userContents
-                })
+                commit("updateState", {
+                  contents,
+                });
 
-                console.log(userContents)
+                console.log(contents);
 
                 state.pageNum = payload.pageNum
+                
 
-                // if (page)
-
-
-
-
-                // const pageLength = 1
-
-            // if (pageLength > 1) {
-            //     for (let page = 2; page <= pageLength; page += 1) {
-            //         if (page > (payload.number / 12)) break
-            //         const res = await fetchContents(payload)
-            //         const contents = res.data.postList
-            //         commit('updateState', {
-            //             contents: [...state.movies, ...contents]
-            //         })
-            //     }
-            // }
 
             }catch (err){
                 console.log()

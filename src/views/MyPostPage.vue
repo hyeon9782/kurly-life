@@ -44,7 +44,7 @@
         {{ introduce }}
       </div>
     </div>
-    <UserContent />
+    <UserContent type="user" :userId=1 />
   </div>
 </template>
 

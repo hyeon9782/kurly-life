@@ -1,5 +1,5 @@
 <template>
-  <div class="contents-card-mini" @click="detail(content.idx)">
+  <div class="contents-card-mini" @click="detail">
     <div class="contents-image">
         <img :src="content.url" alt="메인 컨텐츠" width="100%">
     </div>
@@ -18,8 +18,8 @@ export default {
         }
     },
     methods:{
-        detail(idx){
-            this.$router.push(`/contents/${idx}`)
+        detail(){
+            this.$router.push(`/contents/${this.content.contentsId}`)
         }
     },
     computed:{

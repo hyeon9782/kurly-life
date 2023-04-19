@@ -1,7 +1,7 @@
 <template>
   <div class="following-card">
     <UserBox :uploadDate="item.createdAt"/>
-    <div class="thumbnail-box" @click="detail(item.idx)">
+    <div class="thumbnail-box" @click="detail(item.contentsId)">
       <AppImage :img="item.thumbnail"/>
     </div>
     <div class="click-box">
@@ -42,10 +42,6 @@ export default {
   components:{
     UserBox,
     AppImage
-  },
-  created(){
-    console.log(this.item.createdAt)
-    console.log(this.item)
   },
   computed:{
     // cuttingContent(){

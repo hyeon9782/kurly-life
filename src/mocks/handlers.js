@@ -108,9 +108,20 @@ const handlers = [
   rest.get("/api/mypost", (req, res, ctx) => {
     console.log("테스트");
     const userId = Number(req.url.searchParams.get("userId"));
-    const newContents = contents.filter((content) => {
-      return content.userId === userId;
-    });
+    const category = req.url.searchParams.get("category");
+
+    let newContents = [];
+    if (category) {
+      console.log("테스트 1");
+      newContents = contents.filter((content) => {
+        return content.userId === userId && content.category === category;
+      });
+    } else {
+      console.log("테스트 2");
+      newContents = contents.filter((content) => {
+        return content.userId === userId;
+      });
+    }
     return res(
       ctx.status(200),
       ctx.json({
@@ -122,12 +133,20 @@ const handlers = [
   // 팔로우한 유저의 컨텐츠를 가져오는 API
   rest.get("/api/follow", (req, res, ctx) => {
     const userId = Number(req.url.searchParams.get("userId"));
-    console.log(userId);
+    const category = req.url.searchParams.get("category");
 
-    const newContents = contents.filter((content) => {
-      console.log(content.userId);
-      return content.userId === userId;
-    });
+    let newContents = [];
+    if (category) {
+      console.log("테스트 1");
+      newContents = contents.filter((content) => {
+        return content.scrap === userId && content.category === category;
+      });
+    } else {
+      console.log("테스트 2");
+      newContents = contents.filter((content) => {
+        return content.scrap === userId;
+      });
+    }
     return res(
       ctx.status(200),
       ctx.json({
@@ -139,10 +158,19 @@ const handlers = [
   // 스크랩한 유저의 컨텐츠를 가져오는 API
   rest.get("/api/scrap", (req, res, ctx) => {
     const userId = Number(req.url.searchParams.get("userId"));
-    const newContents = contents.filter((content) => {
-      console.log(content.userId);
-      return content.userId === userId;
-    });
+    const category = req.url.searchParams.get("category");
+    let newContents = [];
+    if (category) {
+      console.log("테스트 1");
+      newContents = contents.filter((content) => {
+        return content.scrap === userId && content.category === category
+      })
+    } else {
+      console.log("테스트 2");
+      newContents = contents.filter((content) => {
+        return content.scrap === userId;
+      });
+    }
     return res(
       ctx.status(200),
       ctx.json({
@@ -269,7 +297,8 @@ let contents = Array.from(Array(32).keys()).map((contentsId) => {
     like: Math.floor(Math.random() * 10),
     userId,
     nickname,
-    localKeyword: ""
+    localKeyword: "",
+    scrap: Math.floor(Math.random() * 3),
   };
 });
 
@@ -278,6 +307,7 @@ let comments = Array.from(Array(32).keys()).map((commentId) => ({
   content: `댓글 내용입니다. ${commentId}`,
   contentsId: Math.floor(Math.random() * 10)
 }));
+
 
 const products = Array.from(Array(5).keys()).map((productId) => ({
   productId,

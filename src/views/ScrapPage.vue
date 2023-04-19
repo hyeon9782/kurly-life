@@ -1,7 +1,7 @@
 <template>
   <div class="my-scrap">
     <div>
-      <UserContent />
+      <UserContent type="scrap" />
     </div>
   </div>
 </template>
@@ -12,22 +12,6 @@ export default {
   components:{
     UserContent,
   },
-  methods:{
-    fetchData(){
-      this.$store.dispatch('contents/fetchScrapContents', {
-        contentsId: "",
-        category: ""
-      })
-    }
-  },
-  computed:{
-    contents(){
-      return this.$store.state.contents.contents
-    }
-  },
-  created(){
-
-  }
 }
 </script>
 
