@@ -16,7 +16,8 @@ export default {
         restaurantContents: [],
         products: [],
         keyword: "",
-        pageNum: 0
+        pageNum: 0,
+        loading: false,
     }),
 
     getters: {},
@@ -66,7 +67,7 @@ export default {
         async searchContents({ commit }, payload){
 
             try{
-
+               
                 const res = await fetchContents(payload)
 
                 const contents = res.data.data

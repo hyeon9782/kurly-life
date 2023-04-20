@@ -8,7 +8,7 @@ const handlers = [
     const category = searchParams.get("category");
     const theme = searchParams.get("theme");
     const keyword = searchParams.get("keyword");
-    const pageNum = searchParams.get("pageNum");
+    const pageNum = Number(searchParams.get("pageNum"));
     console.log(category, "theme : " + theme, keyword, pageNum);
     let newContents = [];
     if (!keyword && !theme) {
@@ -38,8 +38,9 @@ const handlers = [
 
     return res(
       ctx.status(200),
+      ctx.delay(1000),
       ctx.json({
-        data: newContents,
+        data: newContents.slice(pageNum * 6, (pageNum + 1) * 6),
       })
     );
   }),
@@ -277,7 +278,7 @@ const users = [
   },
 ];
 
-let contents = Array.from(Array(32).keys()).map((contentsId) => {
+let contents = Array.from(Array(99).keys()).map((contentsId) => {
   const category = ["recipe", "lifehack", "restaurant"][
     Math.floor(Math.random() * 3)
   ];
