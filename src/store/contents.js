@@ -1,6 +1,7 @@
 import { fetchContents, fetchBestContents, fetchContentsWithContentsId, fetchContentsWithUserId  } from '@/api/contents'
 import { fetchScrapContents } from '@/api/scrap';
 import { fetchProducts } from '@/api/products';
+import { fetchComments } from '@/api/comments';
 
 export default {
 
@@ -90,12 +91,16 @@ export default {
             try {
                 const res = await fetchContentsWithContentsId(contentsId);
                 const res1 = await fetchProducts();
+                const res2 = await fetchComments(contentsId);
                 const detail = res.data;
                 const products = res1.data.data;
+                let comments = [];
+                comments = res2.data.data;
 
                 commit("updateState", {
                   detail,
                   products,
+                  comments,
                 });
             } catch (err) {
                 console.log(err);
@@ -146,6 +151,22 @@ export default {
                 console.log()
             }
         },
+
+        async fetchDetailComments({commit}, payload){
+            try{
+                const res = await fetchComments(payload);
+
+                console.log(res);
+
+                const comments = res.data.data;
+
+                commit("updateState", {
+                  comments,
+                });
+            }catch (err) {
+                console.log(err);
+            }
+        }
 
     }
 }

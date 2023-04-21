@@ -69,7 +69,7 @@ export default {
   },
   methods:{
     movePage(){
-      this.$router.push(`/user-page/${this.userId}`)
+      this.$router.push(`/mypage/${this.userId}`)
     },
     reply(){
       this.$router.push(`/reply/${this.commentsId}`)

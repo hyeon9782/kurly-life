@@ -182,7 +182,9 @@ const handlers = [
 
   // 댓글 조회 API
   rest.get("/api/comments", (req, res, ctx) => {
+    console.log("테스트");
     const contentsId = Number(req.url.searchParams.get("contentsId"))
+    console.log(contentsId);
     const newComments = comments.filter(comment => {
       return comment.contentsId = contentsId
     })

@@ -26,9 +26,9 @@
     </div>
     <div class="comments-section">
       <div class="contents-box">
-        <CommentsItem v-for="i in 5" :key="i"/>
+        <CommentsItem v-for="(comment, idx) in comments" :key="idx" :item="comment"/>
       </div>
-      <div class="full-view" @click="commentsFullView">
+      <div class="full-view" @click="commentsFullView" v-if="comments.length !== 0">
         전체 댓글 보기 >
       </div>
     </div>
@@ -65,7 +65,10 @@ export default {
     },
     getDetailContents(){
       this.$store.dispatch('contents/fetchDetailContents', this.$route.params.contentsId)
-    }
+    },
+    // getDetailComments(){
+    //   this.$store.dispatch('contents/fetchDetailComments', this.$route.params.contentsId)
+    // }
   },
   computed:{
     detail(){
@@ -73,10 +76,14 @@ export default {
     },
     products(){
       return this.$store.state.contents.products
+    },
+    comments(){
+      return this.$store.state.contents.comments
     }
   },
   created(){
     this.getDetailContents()
+    // this.getDetailComments()
   },
   data(){
     return{
