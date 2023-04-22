@@ -186,7 +186,7 @@ const handlers = [
     const contentsId = Number(req.url.searchParams.get("contentsId"))
     console.log(contentsId);
     const newComments = comments.filter(comment => {
-      return comment.contentsId = contentsId
+      return comment.contentsId === contentsId
     })
     return res(
       ctx.status(200),
@@ -305,11 +305,16 @@ let contents = Array.from(Array(99).keys()).map((contentsId) => {
   };
 });
 
-let comments = Array.from(Array(32).keys()).map((commentId) => ({
-  commentId,
-  content: `댓글 내용입니다. ${commentId}`,
-  contentsId: Math.floor(Math.random() * 10)
-}));
+let comments = Array.from(Array(99).keys()).map((commentId) => {
+  const { userId, nickname } = users[Math.floor(Math.random() * 4)];
+  return {
+    commentId,
+    content: `댓글 내용입니다. ${commentId}`,
+    nickname: nickname,
+    userId,
+    contentsId: Math.floor(Math.random() * 10)
+  }
+});
 
 
 const products = Array.from(Array(5).keys()).map((productId) => ({

@@ -152,7 +152,7 @@ export default {
             }
         },
 
-        async fetchDetailComments({commit}, payload){
+        async fetchComments({commit}, payload){
             try{
                 const res = await fetchComments(payload);
 

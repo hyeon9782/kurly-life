@@ -32,7 +32,7 @@ const routes = [
     component: () => import("@/views/RegistPage.vue"),
   },
   {
-    path: "/comments/:id",
+    path: "/comments",
     name: "comments",
     component: () => import("@/components/comments/CommentsPage.vue"),
   },
@@ -106,7 +106,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if (to.path === '/write' || to.path === `/contents/${to.params.contentsId}` || to.path === `/mypost/${to.params.id}` || to.path === `/scrap/${to.params.id}` || to.path === `/comments/${to.params.id}` || to.path === `/reply/${to.params.id}`){
+  if (to.path === '/write' || to.path === `/contents/${to.params.contentsId}` || to.path === `/mypost/${to.params.id}` || to.path === `/scrap/${to.params.id}` || to.path === `/comments` || to.path === `/reply/${to.params.id}`){
     store.state['type'] = "sub" 
     store.state['title'] = to.title
   } else {

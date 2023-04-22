@@ -7,10 +7,10 @@
     </div>
     <div class="comments-contents">
       <div class="user-name">
-        {{ nickname }}
+        {{ comment.nickname }}
       </div>
       <div class="content">
-        {{ content }}
+        {{ comment.content }}
       </div>
       <div class="sub-box">
         <div class="uploadDate">
@@ -30,7 +30,7 @@
 <script>
 export default {
   props:{
-    item:{
+    comment:{
       type:Object,
       default: () => ({}),
     },

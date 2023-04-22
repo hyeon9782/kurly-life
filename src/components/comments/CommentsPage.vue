@@ -1,7 +1,7 @@
 <template>
   <div class="comments-page">
     <div class="comments-container">
-      <CommentsItem v-for="i in 5" :key="i"/>
+      <CommentsItem v-for="(comment, index) in comments" :key="index" :comment="comment"/>
     </div>
     <CommentsInput />
   </div>
@@ -14,6 +14,19 @@ export default {
   components:{
     CommentsItem,
     CommentsInput
+  },
+  methods:{
+    getComments(){
+      this.$store.dispatch('contents/fetchComments', this.$route.params.contentsId)
+    }
+  },
+  created(){
+    this.getComments()
+  },
+  computed:{
+    comments(){
+      return this.$store.state.contents.comments
+    }
   }
 }
 </script>

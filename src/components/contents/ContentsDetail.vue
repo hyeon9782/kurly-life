@@ -26,7 +26,7 @@
     </div>
     <div class="comments-section">
       <div class="contents-box">
-        <CommentsItem v-for="(comment, idx) in comments" :key="idx" :item="comment"/>
+        <CommentsItem v-for="(comment, idx) in comments" :key="idx" :comment="comment"/>
       </div>
       <div class="full-view" @click="commentsFullView" v-if="comments.length !== 0">
         전체 댓글 보기 >
@@ -61,7 +61,7 @@ import ScrollUp from '@/components/common/ScrollUp.vue';
 export default {
   methods:{
     commentsFullView(){
-      this.$router.push(`/comments/${this.$route.params.contentsId}`)
+      this.$router.push({ name: "comments" , params: { contentsId : this.$route.params.contentsId}})
     },
     getDetailContents(){
       this.$store.dispatch('contents/fetchDetailContents', this.$route.params.contentsId)
@@ -78,7 +78,7 @@ export default {
       return this.$store.state.contents.products
     },
     comments(){
-      return this.$store.state.contents.comments
+      return this.$store.state.contents.comments.slice(0, 5)
     }
   },
   created(){
