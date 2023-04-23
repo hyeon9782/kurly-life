@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 .comments-reply{
-    
+    width: 480px;
     .commnets-box{
         padding: 10px;
     }
