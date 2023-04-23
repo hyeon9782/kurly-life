@@ -66,9 +66,6 @@ export default {
     getDetailContents(){
       this.$store.dispatch('contents/fetchDetailContents', this.$route.params.contentsId)
     },
-    // getDetailComments(){
-    //   this.$store.dispatch('contents/fetchDetailComments', this.$route.params.contentsId)
-    // }
   },
   computed:{
     detail(){
@@ -83,7 +80,6 @@ export default {
   },
   created(){
     this.getDetailContents()
-    // this.getDetailComments()
   },
   data(){
     return{

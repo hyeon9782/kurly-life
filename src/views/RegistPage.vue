@@ -35,9 +35,6 @@
     <div class="content-box">  
       <VueEditor 
       v-model="htmlForEditor"/>
-      <div v-if="test">
-        {{ content }}
-      </div>
     </div>
     <div class="upload-box">
       <div class="upload-btn" @click="storyUpload">
@@ -226,6 +223,7 @@ export default {
 
   .content-box{
     padding: 0px 20px 20px 20px;
+    min-height: 500px;
   }
   .upload-box{
     display: flex;
