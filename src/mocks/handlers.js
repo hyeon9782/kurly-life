@@ -38,7 +38,7 @@ const handlers = [
 
     return res(
       ctx.status(200),
-      ctx.delay(1000),
+      // ctx.delay(1000),
       ctx.json({
         data: newContents.slice(pageNum * 6, (pageNum + 1) * 6),
       })
@@ -284,6 +284,9 @@ let contents = Array.from(Array(99).keys()).map((contentsId) => {
   const category = ["recipe", "lifehack", "restaurant"][
     Math.floor(Math.random() * 3)
   ];
+  const image = ["cookies.jpg", "pasta.jpg", "pumpkin-soup.jpg"][
+    Math.floor(Math.random() * 3)
+  ];
   const theme =
     categoryThemes[category][
       Math.floor(Math.random() * categoryThemes[category].length)
@@ -301,6 +304,7 @@ let contents = Array.from(Array(99).keys()).map((contentsId) => {
     userId,
     nickname,
     localKeyword: "",
+    image,
     scrap: Math.floor(Math.random() * 3),
   };
 });

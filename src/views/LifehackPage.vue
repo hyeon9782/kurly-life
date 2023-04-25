@@ -6,8 +6,8 @@
         <NoData />
       </template>
       <template v-else>
-        <InfiniteScroll category="lifehack"></InfiniteScroll>
-        <!-- <ContentCard v-for="(content, idx) in contents" :key="idx"  :item="content"/> -->
+        <!-- <InfiniteScroll category="lifehack"></InfiniteScroll> -->
+        <ContentCard v-for="(content, idx) in contents" :key="idx"  :item="content"/>
         
       </template>
     </div>
@@ -16,15 +16,15 @@
 
 <script>
 import ContentTheme from '@/components/contents/ContentsTheme.vue';
-// import ContentCard from '@/components/contents/ContentsCard.vue';
+import ContentCard from '@/components/contents/ContentsCard.vue';
 import NoData from '@/components/common/NoData.vue';
-import InfiniteScroll from '@/components/common/InfiniteScroll.vue';
+// import InfiniteScroll from '@/components/common/InfiniteScroll.vue';
 export default {
   components:{
     ContentTheme,
-    // ContentCard,
+    ContentCard,
     NoData,
-    InfiniteScroll
+    // InfiniteScroll
   },
   methods:{
     searchContents(){
@@ -38,7 +38,7 @@ export default {
     }
   },
   created(){
-    // this.searchContents()
+    this.searchContents()
   },
   computed:{
     contents(){

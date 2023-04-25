@@ -8,12 +8,12 @@ module.exports = {
   //   ? '/kurly-life/'
   //   : '/',
   // outputDir: "../src/main/resources/static",
-  devServer:{
-    proxy:{
-      '/api':{
-        target: 'http:/localhost:8080',
-        changeOrigin: true // cross origin 허용c
-      }
-    }
-  }
-}
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http:/localhost:8080",
+        changeOrigin: true, // cross origin 허용c
+      },
+    },
+  },
+};

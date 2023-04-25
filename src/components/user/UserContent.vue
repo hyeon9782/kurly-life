@@ -7,13 +7,10 @@
     </div>
     <div class="content-container">
       <template v-if="true">
-        <div class="content-card" v-for="content in contents" :key="content.id" @click="detail(content.contentsId)">
-          <img :src="content.url" alt="img" width="100%">
+        <div class="content-card" v-for="content in contents" :key="content.contentsId" @click="detail(content.contentsId)">
+          <img :src="require(`@/assets/image/${content.image}`)" alt="img" width="100%" height="100%">
         </div>
       </template>
-      <div v-for="(item, $index) in items" :key="$index" class="content-card" >
-        {{ item.idx }}
-      </div>
     </div>
   </div>
 </template>
@@ -32,6 +29,7 @@ export default {
   },
   data(){
     return{
+      imageUrl: '',
       items: [],
       page: 0,
       tabs: [
@@ -85,6 +83,7 @@ export default {
   },
   created(){
     this.fetchContents()
+    this.imageUrl = 'https://example.com/image.jpg';
   }
 }
 </script>
