@@ -294,7 +294,7 @@ let contents = Array.from(Array(99).keys()).map((contentsId) => {
   const { userId, nickname } = users[Math.floor(Math.random() * 4)];
   return {
     contentsId,
-    title: `${category} ${theme} 제목 ${contentsId}`,
+    title: `${theme} 제목 ${contentsId}`,
     content: `<h1>${theme} 내용 ${contentsId}</h1>`,
     category,
     theme,
@@ -321,12 +321,22 @@ let comments = Array.from(Array(99).keys()).map((commentId) => {
 });
 
 
-const products = Array.from(Array(5).keys()).map((productId) => ({
-  productId,
-  productName: `상품 이름 ${productId}`,
-  productPrice: 19000,
-  discount: 10
-}));
+const products = Array.from(Array(5).keys()).map((productId) => {
+  const image = [
+    "beef.jpg",
+    "carrots.jpg",
+    "chiken.jpg",
+    "onion.jpg",
+    "pork.jpg",
+  ][Math.floor(Math.random() * 5)];
+  return {
+    productId,
+    productName: `상품 이름 ${productId}`,
+    productPrice: 19000,
+    image,
+    discount: 10,
+  };
+});
 
 
 

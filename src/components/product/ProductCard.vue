@@ -1,6 +1,6 @@
 <template>
   <div class="product-card">
-    <div class="product-image" style="background: url(product.img)">
+    <div class="product-image" :style="{backgroundImage: 'url(require(' + '@/assets/image/'+product.image + '))'}">
       <div class="cart-box" @click="shoppingCart">
         <span class="material-symbols-outlined">
           shopping_cart

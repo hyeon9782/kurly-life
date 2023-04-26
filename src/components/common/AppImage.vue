@@ -6,7 +6,7 @@
       </div>
     </template>
     <template v-if="img != null && img != ''">
-      <img :src="img" alt="잘못된 URL입니다." width="100%">
+      <img :src="img" alt="잘못된 URL입니다." width="100%" height="100%">
     </template>
   </div>
 </template>

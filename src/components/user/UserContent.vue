@@ -29,7 +29,6 @@ export default {
   },
   data(){
     return{
-      imageUrl: '',
       items: [],
       page: 0,
       tabs: [
@@ -83,7 +82,6 @@ export default {
   },
   created(){
     this.fetchContents()
-    this.imageUrl = 'https://example.com/image.jpg';
   }
 }
 </script>
@@ -112,7 +110,7 @@ export default {
       width: 240px;
       height: 240px;
       background: yellowgreen;
-      border: 1px solid black;
+      border: 1px solid white;
       
     }
   }

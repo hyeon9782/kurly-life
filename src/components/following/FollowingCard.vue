@@ -2,7 +2,7 @@
   <div class="following-card">
     <UserBox :uploadDate="item.createdAt"/>
     <div class="thumbnail-box" @click="detail(item.contentsId)">
-      <AppImage :img="item.thumbnail"/>
+      <AppImage :img="require(`@/assets/image/${item.image}`)"/>
     </div>
     <div class="click-box">
       <div class="like-box">

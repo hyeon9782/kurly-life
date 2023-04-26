@@ -1,7 +1,7 @@
 <template>
   <div class="contents-card-mini" @click="detail">
     <div class="contents-image">
-        <img :src="content.url" alt="메인 컨텐츠" width="100%">
+        <img :src="require(`@/assets/image/${content.image}`)" alt="메인 컨텐츠" width="100%" height="100%">
     </div>
     <div class="contents-title">
       {{ title }}

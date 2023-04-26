@@ -1,7 +1,7 @@
 <template>
   <div class="content-card">
     <div class="content-image" @click="detail">
-      <AppImage :img="item.url" height="210"/>
+      <AppImage :img="require(`@/assets/image/${item.image}`)" />
     </div>
     <div class="content-title">
       {{ item.title }}
