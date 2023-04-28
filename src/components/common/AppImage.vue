@@ -1,12 +1,14 @@
 <template>
   <div>
     <template v-if="img == null || img == ''">
-      <div class="temporary-image" :class="{height210: height == '210'}">
+      <div class="temporary-image">
         임시 이미지
       </div>
     </template>
     <template v-if="img != null && img != ''">
-      <img :src="img" alt="잘못된 URL입니다." width="100%" height="100%">
+      <div :class="{height210 : height === '210', height460 : height === '460'}">
+        <img :src="img" alt="잘못된 URL입니다." width="100%" height="100%">
+      </div>
     </template>
   </div>
 </template>
@@ -37,10 +39,20 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
+.height210{
+  width: 100%;
+  height: 210px;
+}
+
 .height460{
+  width: 100%;
+  height: 460px;
+}
+/* .height460{
     height: 460px;
 }
 .height210{
     height: 210px !important;
-}
+} */
 </style>
