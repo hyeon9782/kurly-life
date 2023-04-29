@@ -7,7 +7,7 @@
       {{ item.title }}
     </div>
     <div>
-      <ClickBox />
+      <ClickBox :likeNum="item.like" :scrapNum="item.scrap" />
     </div>
   </div>
 </template>

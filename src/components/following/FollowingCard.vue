@@ -12,7 +12,7 @@
           </span>
         </div>
         <div class="like-no">
-          {{ item.likeCount }}
+          {{ item.like }}
         </div>
       </div>
       <div class="scrap-box">
@@ -22,7 +22,7 @@
           </span>
         </div>
         <div class="scrap-no">
-          2
+          {{ item.scrap }}
         </div>
       </div>
     </div>
