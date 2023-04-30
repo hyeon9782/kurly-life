@@ -32,32 +32,32 @@
         전체 댓글 보기 >
       </div>
     </div>
-    <div class="product-section">
+    <!-- <div class="product-section">
       <div class="product-title">
         요리에 사용된 재료
       </div>
       <ProductSlide :products="products" />
-    </div>
-    <div class="recipe-section">
+    </div> -->
+    <!-- <div class="recipe-section">
       <div class="recipe-title">
         같은 재료, 다른 음식
       </div>
       <div class="card-box">
         <ContentsCard v-for="(recipe, idx) in recipeList" :key="idx" :item="recipe"/>
       </div>
-    </div>
-    <ScrollUp />
+    </div> -->
+    <!-- <ScrollUp /> -->
   </div>
 </template>
 
 <script>
 import CommentsItem from '@/components/comments/CommentsItem.vue';
 import ClickBox from '@/components/common/ClickBox.vue';
-import ContentsCard from '@/components/contents/ContentsCard.vue';
+// import ContentsCard from '@/components/contents/ContentsCard.vue';
 import FollowBtn from '@/components/following/FollowBtn.vue';
 import UserBox from '@/components/user/UserBox.vue';
-import ProductSlide from '@/components/product/ProductSlide.vue';
-import ScrollUp from '@/components/common/ScrollUp.vue';
+// import ProductSlide from '@/components/product/ProductSlide.vue';
+// import ScrollUp from '@/components/common/ScrollUp.vue';
 export default {
   methods:{
     commentsFullView(){
@@ -131,11 +131,11 @@ export default {
     }
   },
   components:{
-    ProductSlide,
+    // ProductSlide,
     FollowBtn,
     UserBox,
-    ScrollUp,
-    ContentsCard,
+    // ScrollUp,
+    // ContentsCard,
     ClickBox,
     CommentsItem
   }
@@ -234,5 +234,11 @@ h1 {
   line-height: 25px;
   font-size: 18px;
   padding: 10px 0;
+}
+
+@media screen and (max-width: 575px) {
+  .content-detail{
+    width: 100%;
+  }
 }
 </style>

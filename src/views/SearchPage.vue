@@ -138,4 +138,10 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 575px) {
+  .search-container{
+    width: 100%;
+  }
+}
 </style>

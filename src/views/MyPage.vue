@@ -126,4 +126,10 @@ export default {
     justify-content: space-between;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .mypage-container{
+    width: 100%;
+  }
+}
 </style>

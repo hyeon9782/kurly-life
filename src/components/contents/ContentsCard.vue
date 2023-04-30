@@ -24,22 +24,6 @@ export default {
     item:{
       type: Object,
       default: () => ({})
-    },
-    url:{
-      type: String,
-      default: () => ('')
-    },
-    title:{
-      type: String,
-      default: () => ('')
-    },
-    likeNum:{
-      type: Number,
-      default: () => (0)
-    },
-    scrapNum:{
-      type: Number,
-      default: () => (0)
     }
   },
   methods:{
@@ -70,12 +54,14 @@ export default {
 
 @media screen and (max-width: 575px) {
   .content-card{
-    padding: 0;
+    padding: 5px;
+    width: 50%;
+    box-sizing: border-box;
     .content-image{
-      width: 50%;
+      width: 100%;
     }
     .content-title{
-      width: 50%;
+      width: 100%;
     }
   }
 }

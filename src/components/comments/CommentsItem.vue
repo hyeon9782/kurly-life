@@ -81,7 +81,7 @@ export default {
 <style lang="scss" scoped>
 .comments-item{
   display: flex;
-  padding: 10px;
+  
   .comments-img{
     .user-img-box{
       border-radius: 50%;

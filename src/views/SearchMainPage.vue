@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="result-container">
       <div class="test1">
         {{ keyword }}로 검색한 결과들이에요!
       </div>
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-container{
+.result-container{
     width: 480px;
     margin-top: 102px;
     .event-slide{
@@ -138,5 +138,11 @@ export default {
 .test1{
   font-size: 24px;
   padding: 20px 10px;
+}
+
+@media screen and (max-width: 575px) {
+  .result-container{
+    width: 100%;
+  }
 }
 </style>

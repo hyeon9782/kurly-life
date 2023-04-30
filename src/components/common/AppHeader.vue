@@ -60,7 +60,7 @@ export default {
     z-index: 9;
     .header{
       background: rgb(97, 2, 129);
-      width: 480px;
+      /* width: 480px; */
       height: 52px;
       color: black;
       font-size: 14px;
@@ -82,7 +82,7 @@ export default {
       .header-icon{
         display: flex;
         justify-content: space-around;
-        width: 100;
+        /* width: 100; */
         .location{
           color: white;
         }
@@ -92,6 +92,15 @@ export default {
         }
       }
     }
+}
+
+@media screen and (max-width: 575px) {
+  .header-container{
+
+    .header{
+      width: 100%;
+    }
+  }
 }
 
 .select{

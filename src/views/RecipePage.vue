@@ -53,11 +53,6 @@ export default {
   margin-top:102px;
   margin-bottom: 70px;
   width: 480px;
-  .card-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
 
   @media screen and (max-width: 575px) {
     width: 100%;

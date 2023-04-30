@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container">
+  <div class="list-block">
       <template v-if="contents == null || contents.length == 0">
         <NoData />
       </template>
@@ -26,5 +26,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (max-width: 575px) {
+  .list-block{
+    display: flex;
+    flex-wrap: wrap;
 
+  }
+}
 </style>

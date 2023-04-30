@@ -33,4 +33,10 @@ export default {
       }
     }
 }
+
+@media screen and (max-width: 575px) {
+  .my-scrap{
+    width: 100%;
+  }
+}
 </style>
