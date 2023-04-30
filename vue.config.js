@@ -4,7 +4,7 @@ module.exports = defineConfig({
 })
 
 module.exports = {
-  publicPath: '/kurly-life/',
+  // publicPath: '/kurly-life/',
   devServer: {
     proxy: {
       "/api": {
