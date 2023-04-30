@@ -1,26 +1,17 @@
 <template>
   <div class="recipe-container">
     <ContentTheme category="recipe" theme=""/>
-    <div class="card-container">
-      <template v-if="recipeList == null || recipeList.length == 0">
-        <NoData />
-      </template>
-      <template v-else>
-        <ContentCard v-for="(recipe, idx) in recipeList" :key="idx"  :item="recipe"/>
-      </template>
-    </div>
+    <ContentsList />
   </div>
 </template>
 
 <script>
-import NoData from '@/components/common/NoData.vue';
 import ContentTheme from '@/components/contents/ContentsTheme.vue';
-import ContentCard from '@/components/contents/ContentsCard.vue';
+import ContentsList from '@/components/contents/ContentsList.vue';
 export default {
   components:{
-    NoData,
     ContentTheme,
-    ContentCard,
+    ContentsList
   },
   data(){
     return{
@@ -66,6 +57,10 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  @media screen and (max-width: 575px) {
+    width: 100%;
   }
 }
 </style>

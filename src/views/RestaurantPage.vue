@@ -1,26 +1,17 @@
 <template>
   <div class="restaurant-contaner">
     <ContentTheme category="restaurant" />
-    <div class="card-container">
-      <template v-if="contents == null || contents.length == 0">
-        <NoData />
-      </template>
-      <template v-else>
-        <ContentCard v-for="(content, idx) in contents" :key="idx"  :item="content"/>
-      </template>
-    </div>
+    <ContentsList />
   </div>
 </template>
 
 <script>
 import ContentTheme from '@/components/contents/ContentsTheme.vue';
-import ContentCard from '@/components/contents/ContentsCard.vue';
-import NoData from '@/components/common/NoData.vue';
+import ContentsList from '@/components/contents/ContentsList.vue';
 export default {
   components:{
     ContentTheme,
-    ContentCard,
-    NoData
+    ContentsList,
   },
   methods:{
     searchContents(){
@@ -36,11 +27,6 @@ export default {
   created(){
     this.searchContents()
   },
-  computed:{
-    contents(){
-      return this.$store.state.contents.contents
-    }
-  }
 }
 </script>
 
@@ -52,6 +38,10 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  @media screen and (max-width: 575px) {
+    width: 100%;
   }
 }
 </style>

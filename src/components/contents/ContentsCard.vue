@@ -67,4 +67,16 @@ export default {
 .black{
   color: black;
 }
+
+@media screen and (max-width: 575px) {
+  .content-card{
+    padding: 0;
+    .content-image{
+      width: 50%;
+    }
+    .content-title{
+      width: 50%;
+    }
+  }
+}
 </style>
