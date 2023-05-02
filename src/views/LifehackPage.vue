@@ -33,6 +33,7 @@ export default {
 <style lang="scss" scoped>
 .lifehack-container{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   .card-container{
     display: flex;
@@ -42,6 +43,7 @@ export default {
 
   @media screen and (max-width: 575px) {
     width: 100%;
+    
   }
 }
 </style>

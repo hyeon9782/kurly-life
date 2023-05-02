@@ -70,6 +70,7 @@ export default {
 .main-container{
     width: 480px;
     margin-top: 102px;
+    margin-bottom: 70px;
     .event-slide{
       width: 100%;
       height: 280px;

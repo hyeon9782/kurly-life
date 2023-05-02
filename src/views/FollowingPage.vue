@@ -40,6 +40,7 @@ export default {
 <style lang="scss" scoped>
 .following-container{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   // .card-container{
   //   display: flex;

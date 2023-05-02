@@ -65,8 +65,8 @@ export default {
 .nav-block{
   position: fixed;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
 }
 
 .nav-container{
@@ -83,5 +83,11 @@ export default {
       text-decoration: none;
       color:black;
     }
+}
+
+@media screen and (max-width: 575px) {
+  .nav-container{
+    width: 100vw;
+  }
 }
 </style>

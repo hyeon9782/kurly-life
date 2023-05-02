@@ -39,11 +39,13 @@ body{
 }
 
 .app-box{
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .main-section{
-  
+  min-height: calc(100vh - 70px);
 }
 
 

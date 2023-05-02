@@ -33,6 +33,7 @@ export default {
 <style lang="scss" scoped>
 .restaurant-contaner{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   .card-container{
     display: flex;
