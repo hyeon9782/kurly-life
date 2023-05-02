@@ -115,4 +115,16 @@ export default {
     //     slide
     // }
 }
+
+@media screen and (max-width: 575px) {
+    .contents-slide-box{
+        .slide-head{
+            .full-view{
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+
 </style>

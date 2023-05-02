@@ -1,8 +1,8 @@
 <template>
   <div class="following-card">
-    <UserBox :uploadDate="item.createdAt"/>
+    <UserBox :uploadDate="item.createdAt" :userId="item.userId" :nickname="item.nickname"/>
     <div class="thumbnail-box" @click="detail(item.contentsId)">
-      <AppImage :img="require(`@/assets/image/${item.image}`)" height="460"/>
+      <AppImage :img="require(`@/assets/image/${item.image}`)" height="460" />
     </div>
     <div class="click-box">
       <div class="like-box">

@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="main-block">
       <EventSlide :events="events"/>
       <ContentSlideBox :title="slides[0].title" :description="slides[0].description" :category="slides[0].category" :contents="recipeContents" />
       <ContentSlideBox :title="slides[1].title" :description="slides[1].description" :category="slides[1].category" />
@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-container{
+.main-block{
     width: 480px;
     margin-top: 102px;
     margin-bottom: 70px;
@@ -85,9 +85,9 @@ export default {
   
 }
 
-/* @media screen and (max-width: 575px) {
-  .main-container{
+@media screen and (max-width: 575px) {
+  .main-block{
     width: 100%;
   }
-} */
+}
 </style>

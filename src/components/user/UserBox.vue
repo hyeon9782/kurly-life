@@ -23,7 +23,7 @@ export default {
     },
     nickname: {
       type: String,
-      default: () => ("노른자없는계란")
+      default: () => ("기본")
     },
     uploadDate: {
       type: String,
@@ -39,7 +39,7 @@ export default {
   },
   methods:{
     movePage(userId){
-      this.$router.push(`/user-page/${userId}`)
+      this.$router.push(`/mypost/${userId}`)
     }
   },
   computed:{
