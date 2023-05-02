@@ -92,6 +92,12 @@ export default {
     }
 }
 
+@media screen and (max-width: 575px) {
+  .header-nav{
+    width: 100vw;
+  }
+}
+
 .select{
     border-bottom: 6px solid rgb(97, 2, 129) !important;
 }
