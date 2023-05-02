@@ -149,6 +149,7 @@ h1 {
 }
 .content-detail{
   width: 480px;
+  margin-bottom: 70px;
   .title-box{
     font-size: 28px;
     font-weight: bold;

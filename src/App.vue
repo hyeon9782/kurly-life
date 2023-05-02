@@ -45,6 +45,7 @@ body{
 }
 
 .main-section{
+  width: 100vw;
   min-height: calc(100vh - 70px);
 }
 

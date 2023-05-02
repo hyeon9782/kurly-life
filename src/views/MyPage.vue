@@ -57,6 +57,7 @@ export default {
 <style lang="scss" scoped>
 .mypage-container{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   .my-box{
     padding: 10px;

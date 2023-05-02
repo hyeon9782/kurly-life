@@ -119,4 +119,16 @@ export default {
   border-bottom: 6px solid rgb(97, 2, 129) !important;
   color: rgb(142, 68, 173) !important;
 }
+
+@media screen and (max-width: 575px) {
+  .user-content{
+    width: 100%;
+    .content-container{
+
+      .content-card{
+        width: 50%;
+      }
+    }
+  }
+}
 </style>

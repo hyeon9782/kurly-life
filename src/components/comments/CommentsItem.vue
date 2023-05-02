@@ -81,6 +81,7 @@ export default {
 <style lang="scss" scoped>
 .comments-item{
   display: flex;
+  width: 100%;
   
   .comments-img{
     .user-img-box{

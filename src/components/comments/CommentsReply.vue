@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .comments-reply{
     width: 480px;
+    
     .commnets-box{
         padding: 10px;
     }
@@ -49,5 +50,12 @@ export default {
             padding: 10px 0;
         }
     }
+}
+
+@media screen and (max-width: 575px) {
+  .comments-reply{
+    width: 100vw;
+   
+  }
 }
 </style>

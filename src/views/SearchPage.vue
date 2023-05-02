@@ -68,6 +68,7 @@ export default {
 <style lang="scss" scoped>
 .search-container{
   margin-top:102px;
+  margin-bottom: 70px;
   width: 480px;
   .input-box{
     padding: 10px;

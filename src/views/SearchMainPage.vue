@@ -112,11 +112,12 @@ export default {
 .result-container{
     width: 480px;
     margin-top: 102px;
-    .event-slide{
+    margin-bottom: 70px;
+    /* .event-slide{
       width: 100%;
       height: 280px;
       background: lightgray;
-    }
+    } */
 
     .head{
       .title-box{
@@ -124,9 +125,9 @@ export default {
       }
     }
 
-    .search-result{
+    /* .search-result{
       margin: 0 auto;
-    }
+    } */
 
     .card-container{
       display: flex;

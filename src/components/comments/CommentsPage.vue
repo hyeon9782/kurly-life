@@ -34,12 +34,20 @@ export default {
 <style lang="scss">
 .comments-page{
   width: 480px;
-  .reply-input-box{
+  margin-bottom: 70px;
+  .comments-container{
+    padding: 0px 20px;
     display: flex;
-    padding-top: 10px;
-    .reply-input{
-        width: 85%;
-        height: 35px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .comments-page{
+    width: 100vw;
+    .comments-container{
+
     }
   }
 }

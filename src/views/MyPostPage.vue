@@ -74,6 +74,7 @@ export default {
 <style lang="scss" scoped>
 .user-container{
   width: 480px;
+  margin-bottom: 70px;
   .user-box{
     padding: 0 15px 0 15px;
     .user-content{

@@ -18,6 +18,7 @@ export default {
 <style lang="scss" scoped>
 .my-scrap{
     width: 480px;
+    margin-bottom: 70px;
     .scrap-header{
       display: flex;
       padding: 10px;
