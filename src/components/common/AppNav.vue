@@ -1,6 +1,5 @@
 <template>
   <div class="nav-block">
-    <AppPanel ref="panel"/>
     <div class="nav-container">
       <div class="menu">
         <span class="material-symbols-outlined">
@@ -12,22 +11,13 @@
           {{ i.icon }}
         </span>
       </div>
-      <div class="write" @click="togglePanel">
-        <span class="material-symbols-outlined">
-          edit_square
-        </span>
-      </div>
     </div>
     
   </div>
 </template>
 
 <script>
-import AppPanel from '@/components/common/AppPanel.vue';
 export default {
-  components:{
-    AppPanel
-  },
   data(){
     return{
       nav: [
@@ -43,6 +33,10 @@ export default {
           icon: "person",
           href: "/mypage"
         },
+        {
+          icon: "edit_square",
+          href: "/write"
+        },
       ],
     }
   },
@@ -50,11 +44,7 @@ export default {
     togglePanel() {
       this.$refs.panel.showPanel()
     },
-    write(){
-      this.$router.push("/write")
-    },
     movePage(href){
-      this.$refs.panel.hidePanel()
       this.$router.push(href).catch(err => err);
     }
   }

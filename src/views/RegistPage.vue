@@ -223,7 +223,6 @@ export default {
 
   .content-box{
     padding: 0px 20px 20px 20px;
-    min-height: 500px;
   }
   .upload-box{
     display: flex;
@@ -237,6 +236,12 @@ export default {
       padding: 15px 20px 15px 20px;
       
     }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .content-write-page{
+    width: 100%;
   }
 }
 </style>

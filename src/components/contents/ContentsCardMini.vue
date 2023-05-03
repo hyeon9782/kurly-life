@@ -32,16 +32,25 @@ export default {
 
 <style lang="scss" scoped>
 .contents-card-mini{
-    width: 130px;
+    width: 150px;
     height: 200px;
     .contents-image{
-        width: 130px;
-        height: 130px;
+        width: 150px;
+        height: 150px;
         background: lightgray;
     }
     .contents-title{
         font-size:18px;
         padding: 8px 0 5px 0 ;
     }
+}
+
+@media screen and (max-width: 575px) {
+.contents-card-mini{
+    .contents-image{
+        width: 130px;
+        height: 130px;
+    }
+}
 }
 </style>
