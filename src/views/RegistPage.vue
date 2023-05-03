@@ -8,7 +8,23 @@
         <input type="text" class="title-input" placeholder="제목을 입력해주세요." v-model="title">
       </div>
     </div>
-    <div class="keyword-box">
+    <div class="category-box">
+      <div class="category-text">카테고리</div>
+      <div class="category-select-box">
+        <select v-model="category" class="category-select" @change="themeChange">
+          <option v-for="(item, index) in categoryList" :key="index" :value="item.category">{{ item.text }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="theme-box">
+      <div class="theme-text">테마</div>
+      <div class="theme-select-box">
+        <select v-model="theme" class="theme-select">
+          <option v-for="(item, index) in themeList" :key="index" :value="item">{{ item }}</option>
+        </select>
+      </div>
+    </div>
+    <!-- <div class="keyword-box">
       <div class="keyword-text">
         키워드
       </div>
@@ -23,7 +39,7 @@
       <div class="ingredient-input-box">
         <input type="text" class="ingredient-input" placeholder="재료를 입력해주세요." v-model="localKeyword">
       </div>
-    </div>
+    </div> -->
     <div class="thumbnail-box">
       <div class="thumbnail-text">
         썸네일
@@ -47,8 +63,6 @@
 <script>
 import { registContents } from '@/api/contents';
 import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
-// import { insertContents } from "@/api/bulletin"
-// import axios from "axios";
 export default {
   components:{
     VueEditor
@@ -58,6 +72,26 @@ export default {
       title: "",
       keyword: "",
       keywords: [],
+      categoryList: [
+          {
+              text: "레시피",
+              category: "recipe"
+          },
+          {
+              text: "생활팁",
+              category: "lifehack"
+          },
+          {
+              text: "맛집",
+              category: "restaurant"
+          },
+      ],
+      category: "",
+      theme: "",
+      themeList: [],
+      recipeTheme: ["저녁", "간식", "생일", "야식", "베이커리", "초간단", "요리", "음료", "아이들 간식"],
+      lifehackTheme: ["요리", "보관", "정리", "살림템", "청소", "기타"],
+      restaurantTheme: ["한식", "중식", "일식", "퓨전", "이탈리안", "프렌치"],
       localKeyword: "",
       localKeywords: [],
       content: null,
@@ -65,9 +99,6 @@ export default {
       htmlForEditor: ""
     }
   },
-  // created(){
-  //   this.setEditorContent()
-  // },
   methods:{
     storyUpload(){
       this.cutStr()
@@ -75,8 +106,8 @@ export default {
         contentsId: 32,
         title: this.title,
         content: this.htmlForEditor,
-        category: this.$route.params.category,
-        theme: this.$route.params.theme,
+        category: this.category,
+        theme: this.theme,
         keyword: this.keywords,
         ingredient: "",
         like: 0,
@@ -86,9 +117,16 @@ export default {
       }
       console.log(bulletinData);
       console.log(this.htmlForEditor);
-      // alert("업로드 완료!")
-      // this.$router.back()
+      alert("업로드 완료!")
+      console.log(bulletinData)
+      this.$router.back()
       registContents(bulletinData)
+      
+    },
+    themeChange(){
+      if (this.category === "recipe") this.themeList = [...this.recipeTheme]
+      else if (this.category === "lifehack") this.themeList = [...this.lifehackTheme]
+      else if (this.category === "restaurant") this.themeList = [...this.restaurantTheme]
       
     },
     setEditorContent() {
@@ -103,28 +141,6 @@ export default {
       this.localKeywords = this.localKeyword.split("#").filter(Boolean)
       this.keywords = this.keyword.split("#").filter(Boolean)
     },
-    // handleImageAdded: function(file, Editor, cursorLocation, resetUploader) {
-    //   // An example of using FormData
-    //   // NOTE: Your key could be different such as:
-    //   // formData.append('file', file)
-
-    //   var formData = new FormData();
-    //   formData.append("image", file);
-
-    //   axios({
-    //     url: "http://localhost:8080/api/upload",
-    //     method: "POST",
-    //     data: formData
-    //   })
-    //     .then(result => {
-    //       const url = result.data.url; // Get url from response
-    //       Editor.insertEmbed(cursorLocation, "image", url);
-    //       resetUploader();
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
   }
 }
 </script>
@@ -143,7 +159,7 @@ export default {
     padding: 0 20px 20px 20px;
     .title-text{
       width: 20%;
-      font-size: 22px;
+      font-size: 18px;
       color: lightgray;
       display: flex;
       justify-content: center;
@@ -158,12 +174,51 @@ export default {
       }
     }
   }
+
+  .category-box{
+    display: flex;
+    padding: 0 20px 20px 20px;
+    .category-text{
+      font-size: 18px;
+      width: 20%;
+      color: lightgray;
+    }
+
+    .category-select-box{
+      width: 80%;
+      text-align: center;
+      .category-select{
+        height: 25px;
+        width: 90%;
+      }
+    }
+  }
+
+  .theme-box{
+    display: flex;
+    padding: 0 20px 20px 20px;
+    .theme-text{
+      text-align: center;
+      font-size: 18px;
+      width: 20%;
+      color: lightgray;
+    }
+
+    .theme-select-box{
+      width: 80%;
+      text-align: center;
+      .theme-select{
+        height: 25px;
+        width: 90%;
+      }
+    }
+  }
   .keyword-box{
     display: flex;
     padding: 0 20px 20px 20px;
     .keyword-text{
       width: 20%;
-      font-size: 22px;
+      font-size: 18px;
       color: lightgray;
       display: flex;
       justify-content: center;
@@ -183,7 +238,7 @@ export default {
     padding: 0 20px 20px 20px;
     .ingredient-text{
       width: 20%;
-      font-size: 22px;
+      font-size: 18px;
       color: lightgray;
       display: flex;
       justify-content: center;
@@ -204,7 +259,7 @@ export default {
     padding: 0 20px 20px 20px;
     .thumbnail-text{
       width: 20%;
-      font-size: 22px;
+      font-size: 18px;
       color: lightgray;
       display: flex;
       justify-content: center;
@@ -222,7 +277,7 @@ export default {
   }
 
   .content-box{
-    padding: 0px 20px 20px 20px;
+    padding: 20px;
   }
   .upload-box{
     display: flex;
