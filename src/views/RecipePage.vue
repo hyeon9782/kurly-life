@@ -20,6 +20,7 @@ export default {
       items: [],
       categoryType: "",
       keyword: "",
+      pageNum: 1
     }
   },
   created(){
@@ -29,12 +30,13 @@ export default {
       searchRecipe(){
         console.log(this.theme);
         this.$store.dispatch('contents/searchContents',{
-          pageNum: 1,
+          pageNum: this.pageNum,
           keyword: "",
           category: "recipe",
           theme: this.theme || this.selectTheme,
         }
       )
+      this.pageNum++;
     },
   },
   computed:{

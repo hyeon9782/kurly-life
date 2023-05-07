@@ -41,7 +41,7 @@ const handlers = [
       ctx.status(200),
       // ctx.delay(1000),
       ctx.json({
-        data: newContents.length > 6 ? newContents.slice(pageNum * 6, (pageNum + 1) * 6) : newContents,
+        data: newContents,
       })
     );
   }),
