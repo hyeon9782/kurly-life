@@ -20,6 +20,7 @@ const handlers = [
       newContents = contents.filter((content) => {
         return content.theme === theme;
       });
+      console.log(newContents);
       console.log("여기3");
     } else if (keyword && !category){
       newContents = contents.filter((content) => {
@@ -40,7 +41,7 @@ const handlers = [
       ctx.status(200),
       // ctx.delay(1000),
       ctx.json({
-        data: newContents.slice(pageNum * 6, (pageNum + 1) * 6),
+        data: newContents.length > 6 ? newContents.slice(pageNum * 6, (pageNum + 1) * 6) : newContents,
       })
     );
   }),

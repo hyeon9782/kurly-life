@@ -30,8 +30,8 @@ export default {
       default: () => ("")
     },
     userId:{
-      type: String,
-      default: () => ("3123")
+      type: Number,
+      default: () => (3)
     }
   },
   created(){
