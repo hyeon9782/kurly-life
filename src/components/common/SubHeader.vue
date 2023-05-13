@@ -27,7 +27,12 @@ export default {
 <style lang="scss" scoped>
 .sub-header{
     display: flex;
+    width: 480px;
+    box-sizing: border-box;
     padding: 20px;
+     @media screen and (max-width: 575px) {
+        width: 100%;
+    }
     .back{
         font-size: 28px;
         color: rgb(190, 190, 190);

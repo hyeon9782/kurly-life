@@ -86,11 +86,13 @@ export default {
     }
     .recently-keywords-container{
       display: flex;
-      justify-content: space-around;
+      flex-wrap: wrap;
+      /* justify-content: space-around; */
       .recently-keywords-box{
         padding: 10px 15px 10px 15px;
         border-radius: 30px;
         border: 1px solid lightgray;
+        margin:5px;
       }
     }
   }

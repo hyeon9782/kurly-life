@@ -54,14 +54,14 @@ export default {
   display: flex;
   // justify-content: space-around;
   align-items: center;
-  height: 43px;
-  width: 115px;
-  font-size: 18px;
+  height: 35px;
+  width: 100px;
+  font-size: 14px;
   background: rgb(142, 68, 173);
   border-radius: 30px;
   color: white;
   .icon{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     width: 25%;
     padding-left: 5px;

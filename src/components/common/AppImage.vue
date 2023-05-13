@@ -47,7 +47,7 @@ export default {
 
 .height460{
   width: 100%;
-  height: 460px;
+  height: 350px;
 }
 /* .height460{
     height: 460px;

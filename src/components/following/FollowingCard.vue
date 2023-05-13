@@ -4,33 +4,32 @@
     <div class="thumbnail-box" @click="detail(item.contentsId)">
       <AppImage :img="require(`@/assets/image/${item.image}`)" height="460" />
     </div>
-    <div class="click-box">
-      <div class="like-box">
-        <div class="like-icon">
-          <span class="material-symbols-outlined">
-            thumb_up
-          </span>
+    <div class="title-box">
+      <div class="title">
+        {{ item.title }}
+      </div>
+      <div class="click-box">
+        <div class="like-box">
+          <div class="like-icon">
+            <span class="material-symbols-outlined">
+              thumb_up
+            </span>
+          </div>
+          <div class="like-no">
+            {{ item.like }}
+          </div>
         </div>
-        <div class="like-no">
-          {{ item.like }}
+        <div class="scrap-box">
+          <div class="scrap-icon">
+            <span class="material-symbols-outlined">
+              bookmarks
+            </span>
+          </div>
+          <div class="scrap-no">
+            {{ item.scrap }}
+          </div>
         </div>
       </div>
-      <div class="scrap-box">
-        <div class="scrap-icon">
-          <span class="material-symbols-outlined">
-            bookmarks
-          </span>
-        </div>
-        <div class="scrap-no">
-          {{ item.scrap }}
-        </div>
-      </div>
-    </div>
-    <div class="title">
-      {{ item.title }}
-    </div>
-    <div class="content-box" v-html='item.content'>
-      
     </div>
   </div>
 </template>
@@ -66,10 +65,12 @@ export default {
 .following-card{
   padding: 10px;
   .thumbnail-box{
-    height: 460px;
+    height: 350px;
   }
   .click-box{
     display: flex;
+    align-items: center;
+    width: 100px;
     padding: 5px;
     .like-box{
       display: flex;
@@ -87,6 +88,10 @@ export default {
         margin-top: 3px;
       }
     }
+  }
+  .title-box{
+    display: flex;
+    justify-content: space-between;
   }
   .title{
     font-size:24px;

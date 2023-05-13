@@ -1,7 +1,10 @@
 <template>
   <div class="user-box" @click="movePage(userId)">
-    <div class="user-img-box">
+    <div class="user-img-box" v-if="img">
       <img :src="img" alt="img">
+    </div>
+    <div v-else class="default-img"> 
+      기본
     </div>
     <div class="user-info" :class="{nodate:uploadDate == ''}">
       <div class="nickname">
@@ -60,6 +63,17 @@ export default {
     border-radius: 50%;
     background: lightgray;
     // margin: 10px;
+  }
+  .default-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: gray;
   }
   .user-info{
     color: gray;
