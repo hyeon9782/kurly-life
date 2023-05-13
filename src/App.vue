@@ -41,12 +41,17 @@ body{
 .app-box{
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-height: 100vh;
 }
 
 .main-section{
-  width: 100vw;
-  min-height: calc(100vh - 70px);
+  
+
+  @media screen and (max-width: 575px) {
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+  }
 }
 
 

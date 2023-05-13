@@ -76,12 +76,12 @@ export default {
 
 <style lang="scss" scoped>
 .product-card{
-  width: 130px;
+  width: 110px;
   height: auto;
   .product-image{
     position: relative;
-    width: 130px;
-    height: 160px;
+    width: 110px;
+    height: 140px;
     background: lightgray !important;
     .cart-box{
       position: absolute;

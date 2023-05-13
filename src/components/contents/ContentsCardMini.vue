@@ -48,8 +48,8 @@ export default {
 @media screen and (max-width: 575px) {
 .contents-card-mini{
     .contents-image{
-        width: 130px;
-        height: 130px;
+        width: 110px;
+        height: 110px;
     }
 }
 }
