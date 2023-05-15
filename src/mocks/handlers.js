@@ -281,7 +281,7 @@ const users = [
   },
 ];
 
-let contents = Array.from(Array(99).keys()).map((contentsId) => {
+let contents = Array.from(Array(10).keys()).map((contentsId) => {
   const category = ["recipe", "lifehack", "restaurant"][
     Math.floor(Math.random() * 3)
   ];

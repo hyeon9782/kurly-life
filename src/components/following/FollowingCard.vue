@@ -10,8 +10,8 @@
       </div>
       <div class="click-box">
         <div class="like-box">
-          <div class="like-icon">
-            <span class="material-symbols-outlined">
+          <div class="">
+            <span class="material-symbols-outlined like-icon">
               thumb_up
             </span>
           </div>
@@ -20,8 +20,8 @@
           </div>
         </div>
         <div class="scrap-box">
-          <div class="scrap-icon">
-            <span class="material-symbols-outlined">
+          <div class="">
+            <span class="material-symbols-outlined scrap-icon">
               bookmarks
             </span>
           </div>
@@ -75,17 +75,27 @@ export default {
     .like-box{
       display: flex;
       width: 50%;
+      margin-right: 5px;
+      .like-icon{
+        font-size: 28px;
+      }
       .like-no{
-        margin-left: 10px;
+        margin-left: 5px;
         margin-top: 3px;
+        font-size: 24px;
       }
     }
     .scrap-box{
       display: flex;
       width: 50%;
+      margin-right: 5px;
+      .scrap-icon{
+        font-size: 28px;
+      }
       .scrap-no{
-        margin-left: 10px;
+        margin-left: 5px;
         margin-top: 3px;
+        font-size: 24px;
       }
     }
   }

@@ -1,15 +1,16 @@
 <template>
   <div class="click-box">
     <div class="like-box" @click="toggleLike">
-        <span class="material-symbols-outlined like" :class="{click:activeLike}">
+        <span class="material-symbols-outlined like" v-if="!activeLike">
             favorite
         </span>
+        <div v-else class="heart">❤</div>
         <div class="like-num">
             {{ likeCnt }}
         </div>
     </div>
     <div class="scrap-box" @click="toggleScrap">
-        <span class="material-symbols-outlined scrap" :class="{click:activeScrap}">
+        <span class="material-symbols-outlined scrap">
             bookmark
         </span>
         <div class="scrap-num">
@@ -78,6 +79,10 @@ export default {
     display: flex;
     .like-box{
         display: flex;
+
+        .heart{
+            font-size: 28px;
+        }
         
         .like{
             font-size: 32px;
@@ -98,11 +103,5 @@ export default {
             padding-top: 3px;
         }
     }
-}
-
-.click{
-    color: black !important;
-    background: black !important;
-    // font-size: 60px !important;
 }
 </style>
