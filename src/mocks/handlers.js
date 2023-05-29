@@ -16,20 +16,20 @@ const handlers = [
         return content.category === category;
       });
       console.log("여기4");
-    } else if (theme){
+    } else if (theme) {
       newContents = contents.filter((content) => {
         return content.theme === theme;
       });
       console.log(newContents);
       console.log("여기3");
-    } else if (keyword && !category){
+    } else if (keyword && !category) {
       newContents = contents.filter((content) => {
         return content.title.includes(keyword);
       });
       console.log("여기2");
     } else {
       newContents = contents.filter((content) => {
-        return content.category === category
+        return content.category === category;
       });
       newContents = newContents.filter((content) => {
         return content.title.includes(keyword);
@@ -58,7 +58,7 @@ const handlers = [
   // 컨텐츠를 수정하는 API
   rest.put("/api/post", (req, res, ctx) => {
     const contentsId = Number(req.url.searchParams.get("contentsId"));
-    
+
     contents.map((content) => {
       if (content.contentsId === contentsId) {
         content.content = content;
@@ -100,7 +100,7 @@ const handlers = [
       if (content.contentsId === contentsId) {
         newContents = content;
       }
-    })
+    });
     console.log(contentsId);
     console.log(newContents);
     return res(ctx.status(200), ctx.json(newContents));
@@ -165,8 +165,8 @@ const handlers = [
     if (category) {
       console.log("테스트 1");
       newContents = contents.filter((content) => {
-        return content.scrap === userId && content.category === category
-      })
+        return content.scrap === userId && content.category === category;
+      });
     } else {
       console.log("테스트 2");
       newContents = contents.filter((content) => {
@@ -184,11 +184,11 @@ const handlers = [
   // 댓글 조회 API
   rest.get("/api/comments", (req, res, ctx) => {
     console.log("테스트");
-    const contentsId = Number(req.url.searchParams.get("contentsId"))
+    const contentsId = Number(req.url.searchParams.get("contentsId"));
     console.log(contentsId);
-    const newComments = comments.filter(comment => {
-      return comment.contentsId === contentsId
-    })
+    const newComments = comments.filter((comment) => {
+      return comment.contentsId === contentsId;
+    });
     return res(
       ctx.status(200),
       ctx.json({
@@ -200,26 +200,22 @@ const handlers = [
   // 댓글 등록 API
   rest.post("/api/comments", (req, res, ctx) => {
     console.log(req.body);
-    comments.push(req.body)
+    comments.push(req.body);
     console.log(comments);
-    return res(
-      ctx.status(200)
-    )
+    return res(ctx.status(200));
   }),
 
   // 댓글 수정 API
   rest.put("/api/comments", (req, res, ctx) => {
     const commentId = Number(req.url.searchParams.get("commentId"));
     const content = Number(req.url.searchParams.get("content"));
-    comments.map(comment => {
+    comments.map((comment) => {
       if (comment.commentId === commentId) {
-        comment.content = content
+        comment.content = content;
       }
-    })
+    });
     console.log(comments);
-    return res(
-      ctx.status(200)
-    )
+    return res(ctx.status(200));
   }),
 
   // 댓글 삭제 API
@@ -227,9 +223,7 @@ const handlers = [
     const commentId = Number(req.url.searchParams.get("commentId"));
     comments = comments.filter((comment) => comment.commentId !== commentId);
     console.log(comments);
-    return res(
-      ctx.status(200)
-    )
+    return res(ctx.status(200));
   }),
 
   // 상품 조회 API
@@ -240,7 +234,7 @@ const handlers = [
         data: products,
       })
     );
-  })
+  }),
 ];
 
 const categoryThemes = {
@@ -281,7 +275,7 @@ const users = [
   },
 ];
 
-let contents = Array.from(Array(10).keys()).map((contentsId) => {
+let contents = Array.from(Array(40).keys()).map((contentsId) => {
   const category = ["recipe", "lifehack", "restaurant"][
     Math.floor(Math.random() * 3)
   ];
@@ -317,10 +311,9 @@ let comments = Array.from(Array(99).keys()).map((commentId) => {
     content: `댓글 내용입니다. ${commentId}`,
     nickname: nickname,
     userId,
-    contentsId: Math.floor(Math.random() * 10)
-  }
+    contentsId: Math.floor(Math.random() * 10),
+  };
 });
-
 
 const products = Array.from(Array(5).keys()).map((productId) => {
   const image = [
@@ -338,7 +331,5 @@ const products = Array.from(Array(5).keys()).map((productId) => {
     discount: 10,
   };
 });
-
-
 
 export default handlers;
